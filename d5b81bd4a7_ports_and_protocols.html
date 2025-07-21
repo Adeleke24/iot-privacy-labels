@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 23:04:47</p>
+                <p><strong>Generated:</strong> 2025-07-20 23:11:04</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports: - WiFi connectivity [Source: main.cpp] - LED ring interface [Source: FingerprintManager.cpp] - Touch ring interface [Source: FingerprintManager.cpp] - Fingerprint sensor interface [Source: FingerprintManager.cpp] However, specific details about USB or Ethernet ports are not explicitly identified in the analysis.
+                        Based on the analysis, the device includes: - WiFi connectivity [Source: src/main.cpp] - Fingerprint sensor interface [Source: src/FingerprintManager.cpp] - Touch ring interface [Source: src/FingerprintManager.cpp] - LED ring output interface [Source: src/FingerprintManager.cpp] However, details about specific physical ports like USB or Ethernet are not explicitly identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses: - WiFi for network connectivity - MQTT for messaging and event transmission - Web interface protocol (likely HTTP/HTTPS, but not explicitly specified) - OTA (Over-The-Air) update protocol [Source: README.md, main.cpp]
+                        The analysis identifies two main communication protocols: - WiFi for network connectivity - MQTT for device communication and control [Source: src/main.cpp]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's functionality: - WiFi: Required for network connectivity and remote access - MQTT: Enables event notification for doorbell rings and fingerprint matches - Web interface: Provides user configuration and management capabilities - Fingerprint sensor: Core authentication functionality - Touch ring: User input for doorbell function [Source: README.md, main.cpp]
+                        Based on the device's functionality: - WiFi: Required for network connectivity and remote access - MQTT: Enables remote control and event notifications - Fingerprint sensor: Core authentication functionality - Touch ring: User input for doorbell function - LED ring: Visual feedback to users [Source: README.md, src/FingerprintManager.cpp]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - Fingerprint sensor: Input for biometric data and authentication - Touch ring: Input for doorbell activation - LED ring: Output for visual feedback - WiFi/MQTT: Bidirectional communication for events and control [Source: FingerprintManager.cpp, main.cpp]
+                        The analysis shows: - MQTT: Transmits match IDs, names, and ring events - Fingerprint sensor: Collects and processes fingerprint templates - Touch ring: Accepts user input for doorbell activation - LED ring: Provides output only [Source: src/main.cpp, src/FingerprintManager.cpp]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis identifies: - Sensor pairing validation - WiFi credentials protection - Pseudonymized fingerprint data storage However, detailed security measures for each interface are not fully documented in the analysis. [Source: datasheet_summary_combined.md]
+                        The analysis indicates: - MQTT supports encryption for data transmission - Fingerprint data is pseudonymized - Security levels implemented for fingerprint matching However, detailed security measures for each interface are not fully documented in the analysis. [Source: src/FingerprintManager.cpp]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Not fully identified in analysis. While the device includes WiFi configuration and MQTT settings [Source: SettingsManager.cpp], specific secure setup procedures are not detailed in the provided documentation.
+                        The analysis shows users need to configure: - WiFi credentials - MQTT settings - Device setup info However, specific secure setup procedures are not detailed in the provided analysis. [Source: src/SettingsManager.cpp]
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file implementation in any of the provided documentation.
+                        Not identified in analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions have several privacy implications: - Transmits fingerprint match events via MQTT - Stores WiFi credentials and MQTT settings - Logs device usage information - Communicates with external MQTT broker These functions could potentially expose user presence and access patterns. [Source: main.cpp, SettingsManager.cpp]
+                        The analysis indicates several privacy implications: - Collection and storage of biometric data (fingerprints) - Tracking of access patterns and presence - Transmission of event data via MQTT - Storage of WiFi credentials and device usage info [Source: Device Analysis Section 4 & 9]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses WiFi, MQTT, and possibly HTTP/HTTPS, there is no explicit documentation of unused or unnecessary ports/protocols in the provided analysis.
+                        Not identified in analysis. The documented protocols (WiFi and MQTT) appear to be necessary for core device functionality, but a complete port scan or protocol analysis is not included in the provided information.
                     </div>
                 </div>
                 
