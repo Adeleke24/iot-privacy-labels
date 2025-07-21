@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Home Fi</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/JobinBiju/Home-Fi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/JobinBiju/Home-Fi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 20:02:16</p>
+                <p><strong>Generated:</strong> 2025-07-20 20:18:12</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer not-identified">
-                        Based on the analysis, the following interfaces are confirmed: - WiFi connectivity [Source: ESP32_AdafruitIO.ino] - Digital I/O pins for sensors and actuators (DHT11 sensor, RGB LED) [Source: ESP32_AdafruitIO.ino] Bluetooth capability is mentioned in permissions [Source: Info.plist] but implementation is not confirmed. Other physical interfaces like USB or Ethernet are not identified in the analysis.
+                        Based on the analysis, the device (ESP32) supports WiFi connectivity for data transmission. However, complete physical interface specifications are not explicitly detailed in the analysis. While ESP32 typically includes USB for programming and WiFi for communication, the specific implementation details are not identified in the provided analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The analysis confirms these protocols: - WiFi for network connectivity - MQTT for data transmission to Adafruit IO platform - HTTPS/SSL for encrypted data transmission [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
+                        The device uses the following protocols: - WiFi for network connectivity - HTTPS/MQTT for data transmission to Adafruit IO cloud service [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's functionality: - WiFi: Required for remote control and cloud connectivity - MQTT: Efficient protocol for IoT device data transmission to cloud - HTTPS/SSL: Security requirement for encrypted data transmission - Digital I/O: Required for sensor data collection and LED control [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
+                        The protocols serve specific functional purposes: - WiFi: Required for remote device control and cloud connectivity - HTTPS/MQTT: Used for secure data transmission to Adafruit IO for temperature/humidity monitoring and device control [Source: ESP32_AdafruitIO.ino]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer">
-                        The analysis shows: - WiFi interface: Enables cloud data transmission and remote device control - Digital I/O: Allows reading sensor data (temperature/humidity) and controlling RGB LED - Cloud API access: Permits data transmission to Adafruit IO platform [Source: ESP32_AdafruitIO.ino, home_controller.dart]
+                    <div class="answer not-identified">
+                        The analysis shows the following access patterns: - WiFi interface: Enables data transmission every 3 seconds to Adafruit IO - Cloud API access: Allows temperature/humidity data transmission and LED control However, specific access control mechanisms are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
-                    <div class="answer">
-                        Only one security measure is clearly identified: - HTTPS/SSL encryption for data transmission [Source: TempHumidAPI.dart] No other specific security safeguards for interfaces are mentioned in the analysis.
+                    <div class="answer not-identified">
+                        The only identified security measure is encryption of data in transit using HTTPS/MQTT protocols. Additional safeguards or security measures are not identified in the analysis. [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses WiFi and cloud connectivity, specific secure setup procedures are not documented in the provided analysis.
+                        Not identified in analysis. The setup process and associated security measures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No MUD file or related network security specifications are mentioned in the provided documentation.
+                        Not identified in analysis. No reference to a MUD file was found in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer not-identified">
-                        The device's network functions have several privacy implications: - Continuous data transmission (every 3 seconds) to third-party cloud platform (Adafruit IO) - Collection and cloud storage of identifiable temperature and humidity data - No documented privacy policy or user consent requirements - Unknown data retention periods [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
+                        The device's network functions have several privacy implications: - Continuous data transmission (every 3 seconds) to Adafruit IO cloud service - Data sharing with third-party cloud provider (Adafruit IO) - No mentioned privacy policy or user consent mechanisms - Unknown data retention policies [Source: ESP32_AdafruitIO.ino, Data Sharing & Privacy section]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
-                    <div class="answer">
-                        One potential concern identified: - Bluetooth permission is requested [Source: Info.plist] but no implementation is found, suggesting an unnecessary permission that could pose security risks if exploited. Beyond this, the analysis doesn't provide enough information about unused ports or protocols.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device uses WiFi and HTTPS/MQTT protocols for its core functions, there is no information about additional or unused ports/protocols that might pose security risks.
                     </div>
                 </div>
                 
