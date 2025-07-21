@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 21:22:25</p>
+                <p><strong>Generated:</strong> 2025-07-20 22:36:49</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports the following physical interfaces: - UART: Used for fingerprint sensor communication at 3.3V TTL - GPIO: For doorbell output control - WiFi: For network connectivity [Source: Ports & Protocols section]
+                        Based on the analysis, the device supports: - UART interface (for fingerprint sensor communication) - GPIO interfaces (for LED control and doorbell output) [Source: datasheet_summary_combined.md, main.cpp]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses three main communication protocols: - MQTT: For device-cloud messaging and integration with home automation - HTTP: For web interface access - WebSocket: For real-time updates - WiFi: For network connectivity using WPA2 security [Source: Ports & Protocols section, main.cpp]
+                        The device uses multiple protocols: - MQTT (with TLS encryption) for event publishing and control - HTTP/WebSocket for web interface access - WiFi (WPA2) for network connectivity - UART protocol for fingerprint sensor communication [Source: main.cpp, platformio.ini]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        The interfaces and protocols serve specific functions: - UART: Required for communicating with the fingerprint sensor - MQTT: Enables integration with home automation systems and event reporting - HTTP/WebSocket: Provides user interface and real-time device management - WiFi: Enables network connectivity for all remote functions - GPIO: Necessary for physical doorbell control [Source: Ports & Protocols section, README.md]
+                        Each interface/protocol serves a specific purpose: - UART: Required for fingerprint sensor communication - GPIO: Necessary for LED control and doorbell functionality - MQTT: Enables remote event notification and control - HTTP/WebSocket: Provides web-based management interface - WiFi: Enables network connectivity for remote functions [Source: main.cpp, FingerprintManager.cpp]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - UART: Limited to fingerprint sensor communication - GPIO: Simple output control for doorbell - HTTP: Web interface access (local network only) - MQTT: Device-cloud messaging for events and control - WebSocket: Real-time updates (local network only) [Source: Ports & Protocols section]
+                        The access types include: - UART: Fingerprint data communication - GPIO: Direct hardware control (LED, doorbell) - MQTT: Event publishing and device control - Web interface: Device configuration and management However, specific access control details for each interface are not fully detailed in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The following safeguards are identified: - UART: Hardware-level encryption - WiFi: WPA2 security - MQTT: TLS encryption available - HTTP: Basic authentication - WebSocket: Limited to local network However, specific details about authentication mechanisms and implementation are not fully documented. [Source: Ports & Protocols section]
+                        The identified safeguards include: - TLS encryption for MQTT communications - WPA2 security for WiFi - Password protection for settings - Sensor pairing verification - Authentication support for MQTT [Source: main.cpp, SettingsManager.cpp]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Not fully identified in analysis. While the device includes WiFi configuration and MQTT setup capabilities [Source: SettingsManager.h], specific secure setup procedures are not detailed in the provided documentation.
+                        Not fully identified in analysis. While the device includes WiFi configuration and web interface management capabilities, specific secure setup procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file implementation was found in the provided documentation.
+                        Not identified in analysis. No mention of MUD file implementation in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions have several privacy implications: - Transmits event data via MQTT (access attempts, doorbell rings) - Stores fingerprint templates locally - Collects device setup info including WiFi SSID - Tracks device usage info and activity logs - Integration with home automation could expose presence patterns [Source: Data Collection & Storage section, Data Transmission section]
+                        The device's network functions have several privacy implications: - Collects and transmits access patterns and presence detection - Stores biometric data locally - Communicates with MQTT broker and web dashboard - Handles device setup information (WiFi SSID, configuration) - Maintains device usage logs [Source: main.cpp, SettingsManager.cpp]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis lists active ports and protocols, it doesn't specifically identify unused or unnecessary ones. A security audit would be needed to make this determination.
+                        Not identified in analysis. While the analysis documents the active ports and protocols, it doesn't specify any unused or unnecessary ones. A full security audit would be needed to determine if any implemented protocols are superfluous.
                     </div>
                 </div>
                 
