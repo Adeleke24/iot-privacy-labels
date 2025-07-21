@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Home Fi</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/JobinBiju/Home-Fi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/JobinBiju/Home-Fi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 20:02:16</p>
+                <p><strong>Generated:</strong> 2025-07-20 20:17:57</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The analysis indicates no local storage is implemented for sensor data [Source: Data Collection & Storage section], but does not specifically address device-side encryption methods.
+                        Not identified in analysis. The analysis shows no evidence of local data storage on the device, as sensor data appears to be transmitted directly to Adafruit IO cloud service without local persistence.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While a mobile application is referenced [Source: home_controller.dart], no specific information about mobile app data storage encryption is provided.
+                        Not identified in analysis. While there is evidence of a mobile app built with Flutter [Source: README.md], there are no specific details about data storage encryption within the mobile application.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While cloud storage is confirmed using Adafruit IO platform [Source: TempHumidAPI.dart], the specific encryption methods for stored data are not detailed.
+                        Not identified in analysis. While data is stored in Adafruit IO cloud service [Source: ESP32_AdafruitIO.ino], the specific encryption methods used for data at rest in the cloud are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis indicates HTTPS/SSL encryption is used for data in transit [Source: Data Transmission section, TempHumidAPI.dart]. MQTT protocol is also used [Source: ESP32_AdafruitIO.ino], but specific encryption details for MQTT communication are not provided.
+                        Data in transit appears to be encrypted using HTTPS/MQTT protocols [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]. However, specific encryption algorithms and configurations are not detailed in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While there is a mobile app that communicates with the cloud [Source: TempHumidAPI.dart], specific encryption methods for this communication channel are not detailed.
+                        Not identified in analysis. While there is evidence of communication between the mobile app and cloud [Source: TempHumidAPI.dart], specific encryption methods are not detailed.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No information about key generation, storage, or management is provided in the device analysis.
+                        Not identified in analysis. No information is provided about key generation, storage, or management processes.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While encryption is mentioned (HTTPS/SSL), specific cryptographic libraries and versions are not detailed.
+                        Not identified in analysis. While the system uses Flutter SDK 2.0+ [Source: README.md], specific cryptographic libraries and their versions are not mentioned.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Based on the limited information provided, several security concerns exist: 1. Lack of documented encryption for local storage 2. Unclear encryption standards for MQTT communication 3. No documented key management practices 4. Incomplete information about mobile app security measures However, a full assessment would require more detailed information about the implementation.
+                        Based on the limited information available, potential security concerns include: 1. Lack of documented encryption methods for stored data 2. Unclear key management practices 3. Unspecified cryptographic library versions However, a complete security assessment would require more detailed information about the implementation.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        Not applicable - some encryption is used (HTTPS/SSL for data transmission) [Source: Data Transmission section]. However, the analysis does not provide justification for areas where encryption may be missing or not documented.
+                        Not applicable. The analysis shows that some form of encryption is used for data in transit (HTTPS/MQTT) [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart], though complete encryption coverage across all system components cannot be confirmed from the provided analysis.
                     </div>
                 </div>
                 
