@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 23:04:31</p>
+                <p><strong>Generated:</strong> 2025-07-20 23:10:47</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        Not explicitly identified in analysis. While the analysis confirms local storage of fingerprint templates and device settings, the encryption method for stored data is not documented in the provided materials.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis confirms local storage of fingerprint templates and other data, it doesn't specify the encryption methods used for stored data.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not mention a mobile application or its associated encryption methods.
+                        Not identified in analysis. The device analysis does not mention any mobile applications.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While MQTT broker connectivity is mentioned, the analysis does not specify cloud storage or its encryption methods.
+                        Not identified in analysis. While MQTT broker (cloud) connectivity is mentioned, the analysis doesn't specify cloud storage encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        While the analysis mentions that "Data Encrypted in Transit: Yes" [Source: Data Transmission section], the specific encryption methods are not detailed. MQTT communication is confirmed but encryption protocols are not specified.
+                        Partial information available. The analysis mentions that data is encrypted in transit when using MQTT ("MQTT supports encryption" [Source: Data Transmission section]), but specific encryption protocols or methods are not detailed.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application is mentioned in the provided documentation.
+                        Not identified in analysis. No mobile application is mentioned in the device analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device handles sensitive data (fingerprint templates) and uses WiFi credentials [Source: Other Collected Data section], the key management approach is not documented.
+                        Not identified in analysis. While the device uses encryption for MQTT communication, the key management details are not provided in the analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Based on the limited documentation of encryption practices, there are potential concerns: 1. Lack of documented encryption for stored biometric data 2. Unspecified encryption methods for MQTT communication 3. Missing documentation on key management [Source: Final Assessment section - Privacy Risk Level: Medium]
+                        Based on the limited information available, there are potential security concerns: 1. Lack of documented encryption for stored biometric data 2. Incomplete documentation of encryption methods and key management 3. No mentioned security certifications or standards compliance [Source: Section 9 - Final Assessment noting "Security Documentation: Partial"]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not explicitly state whether encryption is absent, nor does it provide justification for any potential lack of encryption. Some encryption is implied ("Data Encrypted in Transit: Yes") but details are not provided.
+                        Not identified in analysis. The analysis does not provide justification for any absent encryption, though some encryption is present (MQTT communication). The completeness of encryption implementation across all system aspects cannot be determined from the provided analysis.
                     </div>
                 </div>
                 
