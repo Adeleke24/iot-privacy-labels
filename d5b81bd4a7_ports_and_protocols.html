@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 21:14:54</p>
+                <p><strong>Generated:</strong> 2025-07-20 21:22:25</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the available analysis, the device includes: - WiFi connectivity [Source: src/main.cpp] - Fingerprint sensor interface [Source: src/FingerprintManager.cpp] - LED Ring interface [Source: src/FingerprintManager.cpp] - Capacitive touch sensor interface [Source: src/FingerprintManager.cpp] However, specific details about USB, Ethernet, or other physical interfaces are not explicitly identified in the analysis.
+                        Based on the analysis, the device supports the following physical interfaces: - UART: Used for fingerprint sensor communication at 3.3V TTL - GPIO: For doorbell output control - WiFi: For network connectivity [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The analysis identifies the following protocols: - MQTT for device communication [Source: src/main.cpp] - WiFi for network connectivity [Source: src/main.cpp] - TLS for secure data transmission [Source: src/main.cpp]
+                        The device uses three main communication protocols: - MQTT: For device-cloud messaging and integration with home automation - HTTP: For web interface access - WebSocket: For real-time updates - WiFi: For network connectivity using WPA2 security [Source: Ports & Protocols section, main.cpp]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device analysis: - MQTT: Used for integration with home automation and access control systems - WiFi: Required for network connectivity and MQTT communication - Fingerprint interface: Core functionality for access control - LED Ring: User feedback and status indication - Touch sensor: User input for doorbell functionality [Source: src/main.cpp, src/FingerprintManager.cpp]
+                        The interfaces and protocols serve specific functions: - UART: Required for communicating with the fingerprint sensor - MQTT: Enables integration with home automation systems and event reporting - HTTP/WebSocket: Provides user interface and real-time device management - WiFi: Enables network connectivity for all remote functions - GPIO: Necessary for physical doorbell control [Source: Ports & Protocols section, README.md]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - Fingerprint sensor: Input for biometric templates and authentication - MQTT: Remote control and event notifications - Touch sensor: Doorbell activation - LED Ring: Output only for status indication [Source: src/FingerprintManager.cpp, src/main.cpp]
+                        The analysis shows: - UART: Limited to fingerprint sensor communication - GPIO: Simple output control for doorbell - HTTP: Web interface access (local network only) - MQTT: Device-cloud messaging for events and control - WebSocket: Real-time updates (local network only) [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis identifies: - TLS encryption for data transmission - Tamper detection through sensor pairing - Pseudonymized fingerprint data storage [Source: src/main.cpp] However, complete security measures for each interface are not fully detailed in the analysis.
+                        The following safeguards are identified: - UART: Hardware-level encryption - WiFi: WPA2 security - MQTT: TLS encryption available - HTTP: Basic authentication - WebSocket: Limited to local network However, specific details about authentication mechanisms and implementation are not fully documented. [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Not fully identified in analysis. While the analysis mentions device setup information including WiFi SSID and network configuration [Source: src/SettingsManager.h], specific secure setup procedures are not detailed.
+                        Not fully identified in analysis. While the device includes WiFi configuration and MQTT setup capabilities [Source: SettingsManager.h], specific secure setup procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability is found in the provided documentation.
+                        Not identified in analysis. No mention of MUD file implementation was found in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The analysis indicates several privacy considerations: - Collection of access patterns and presence detection - Storage of biometric data locally - Transmission of metadata and event results via MQTT - Network security dependencies [Source: Data Collection & Storage section, Data Transmission section]
+                        The device's network functions have several privacy implications: - Transmits event data via MQTT (access attempts, doorbell rings) - Stores fingerprint templates locally - Collects device setup info including WiFi SSID - Tracks device usage info and activity logs - Integration with home automation could expose presence patterns [Source: Data Collection & Storage section, Data Transmission section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the document details the use of MQTT, WiFi, and TLS, it doesn't specify whether there are any unused or unnecessary ports/protocols present in the system.
+                        Not identified in analysis. While the analysis lists active ports and protocols, it doesn't specifically identify unused or unnecessary ones. A security audit would be needed to make this determination.
                     </div>
                 </div>
                 
