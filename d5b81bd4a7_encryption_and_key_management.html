@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 22:36:30</p>
+                <p><strong>Generated:</strong> 2025-07-20 23:04:31</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        The analysis indicates SHA256 hashing is used for pairing code generation [Source: SettingsManager.cpp], but specific encryption methods for other stored data, including fingerprint templates, are not explicitly detailed in the analysis. This represents a potential security concern given the sensitive nature of biometric data.
+                        Not explicitly identified in analysis. While the analysis confirms local storage of fingerprint templates and device settings, the encryption method for stored data is not documented in the provided materials.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile applications or their associated encryption methods.
+                        Not identified in analysis. The documentation does not mention a mobile application or its associated encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While MQTT broker (cloud) communication is mentioned, the analysis doesn't specify cloud storage encryption methods.
+                        Not identified in analysis. While MQTT broker connectivity is mentioned, the analysis does not specify cloud storage or its encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        TLS encryption is used for MQTT communications between the device and cloud broker [Source: main.cpp, Section 11: Encryption & Key Management]. However, specific TLS version and cipher suites are not detailed.
+                        While the analysis mentions that "Data Encrypted in Transit: Yes" [Source: Data Transmission section], the specific encryption methods are not detailed. MQTT communication is confirmed but encryption protocols are not specified.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application is mentioned in the device analysis.
+                        Not identified in analysis. No mobile application is mentioned in the provided documentation.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer">
-                        Keys are generated using hardware RNG [Source: datasheet_summary_combined.md] and stored in Flash memory [Source: SettingsManager.cpp]. However, detailed key management procedures, rotation policies, and protection mechanisms are not specified in the analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device handles sensitive data (fingerprint templates) and uses WiFi credentials [Source: Other Collected Data section], the key management approach is not documented.
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer">
-                        The device uses Crypto v1.0.0 library [Source: platformio.ini, Section 10: Component Inventory]. No other cryptographic libraries are specifically mentioned.
+                    <div class="answer not-identified">
+                        Not identified in analysis. No specific cryptographic libraries or versions are mentioned in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Several security concerns are evident: 1. Lack of documented encryption for stored biometric data 2. Unspecified TLS version and configuration details 3. Limited information about key management procedures 4. Storage of keys in Flash memory without specified protection mechanisms [Source: Section 9: Final Assessment - Privacy Risk Level: Medium]
+                        Based on the limited documentation of encryption practices, there are potential concerns: 1. Lack of documented encryption for stored biometric data 2. Unspecified encryption methods for MQTT communication 3. Missing documentation on key management [Source: Final Assessment section - Privacy Risk Level: Medium]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While some encryption is implemented (TLS for transit, SHA256 for pairing codes), justification for any unencrypted data storage or transmission is not provided in the analysis.
+                        Not identified in analysis. The documentation does not explicitly state whether encryption is absent, nor does it provide justification for any potential lack of encryption. Some encryption is implied ("Data Encrypted in Transit: Yes") but details are not provided.
                     </div>
                 </div>
                 
