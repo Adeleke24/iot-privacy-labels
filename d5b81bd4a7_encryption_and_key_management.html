@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-21 12:58:13</p>
+                <p><strong>Generated:</strong> 2025-07-21 13:04:06</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        The analysis indicates that SHA256 is used for sensor pairing data storage. For other local storage, the device uses the ESP32's Preferences library for secure storage. However, the specific encryption method for stored fingerprint templates is not explicitly detailed in the analysis. [Source: Section 11 - Encryption & Key Management]
+                        Based on the analysis, there is no explicit encryption mentioned for data stored on the device, including fingerprint templates. The device uses flash memory for storage, but encryption of stored data is not documented. [Source: Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses an MQTT broker for communication, the analysis does not specify cloud storage or its encryption methods.
+                        Not identified in analysis. The device uses MQTT for communication with a broker, but there's no mention of cloud storage or associated encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The device supports TLS encryption for MQTT communication. Additionally, the network connection uses WPA2/WPA3 for WiFi security. [Source: Section 11 - Encryption & Key Management]
+                        The device supports two layers of encryption for data in transit: - WiFi communication uses WPA2/WPA3 security - MQTT communication is TLS-capable but not enforced [Source: Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile application components or their communication methods.
+                        Not identified in analysis. No mobile application is mentioned in the device analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis indicates that the ESP32's Preferences library is used for secure storage of keys and credentials. However, specific details about key generation and management processes are not provided. [Source: Section 11 - Encryption & Key Management]
+                        The analysis shows limited information about key management: - WiFi and MQTT credentials are stored in preferences - Device uses SHA256-based validation for pairing - No detailed information about key generation or rotation is provided [Source: Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer">
-                        The analysis identifies Crypto v1.0.0 as one of the software components used. [Source: Section 10 - Component Inventory & Security Analysis]
+                        The analysis identifies one cryptographic library: - Crypto | v1.0.0 | Open Source [Source: Section 10 - Component Inventory & Security Analysis]
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        The analysis notes "Areas Requiring Further Investigation" including: - Long-term biometric data security - Network traffic encryption details - Third-party library security audits Additionally, the overall privacy risk is rated as "Medium" with concerns about biometric data storage and network transmission of authentication events. [Source: Section 9 - Final Assessment]
+                        Several security concerns are evident: 1. No encryption mentioned for stored fingerprint templates 2. MQTT TLS is optional, not enforced 3. No encryption mentioned for web interface communication 4. Unclear security measures for stored credentials [Source: Section 11 - Encryption & Key Management, Section 9 - Final Assessment]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        Not applicable - the device does implement encryption, including TLS for MQTT communication, WPA2/WPA3 for WiFi security, and SHA256 for sensor pairing. [Source: Section 11 - Encryption & Key Management]
+                        No justification is provided in the analysis for the lack of encryption, particularly for sensitive data like fingerprint templates. This is identified as an area requiring further investigation [Source: Section 12 - Areas Requiring Further Investigation]
                     </div>
                 </div>
                 
