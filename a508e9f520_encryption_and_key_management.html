@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Home Fi</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/JobinBiju/Home-Fi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/JobinBiju/Home-Fi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-20 21:08:39</p>
+                <p><strong>Generated:</strong> 2025-07-24 00:21:55</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided device analysis does not contain any information about encryption methods for data stored on the device.
+                        Not identified in analysis. The analysis indicates there is no local storage on the device, as sensor data is directly transmitted to the cloud every 3 seconds without local storage [Source: ESP32_AdafruitIO.ino].
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While we know this is an iOS/Flutter application from the Runner directory, no specific encryption implementations for mobile app data storage are documented in the analysis.
+                        Not identified in analysis. While the analysis mentions a Flutter mobile application, there is no specific information about local data storage or encryption methods used within the app.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not contain any information about cloud storage or its encryption methods.
+                        Not identified in analysis. While the analysis confirms data is stored in Adafruit IO cloud [Source: TempHumidAPI.dart], the specific encryption methods used for cloud storage are not detailed.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. The provided analysis does not reveal any information about data transmission encryption methods between device and cloud.
+                    <div class="answer">
+                        The analysis indicates HTTPS is used for data transmission [Source: TempHumidAPI.dart], which implies TLS encryption, but specific details about cipher suites or TLS version are not provided.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis confirms this is a mobile application (iOS/Flutter), no details about transmission encryption between the app and cloud are provided.
+                        Not identified in analysis. While the system uses a Flutter mobile app that communicates with Adafruit IO, specific encryption methods for this communication channel are not detailed.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The Section 11 "ENCRYPTION & KEY MANAGEMENT" explicitly states "No encryption methods or key management identified in provided files."
+                        Not identified in analysis. No information is provided about key generation, storage, or management processes.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The component inventory in Section 10 only identifies GeneratedPluginRegistrant but no cryptographic libraries.
+                        Not identified in analysis. While the system uses Flutter 2.0+ [Source: README.md], specific cryptographic libraries and their versions are not mentioned.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Cannot be fully assessed due to lack of information. The analysis notes this as an "Area Requiring Further Investigation" and indicates security implementations need to be examined with access to the full application codebase.
+                        Based on the limited information provided, there are potential concerns: 1. Lack of documented encryption methods for stored data 2. No information about key management 3. Limited details about security measures in place However, a full security assessment would require more detailed information.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided analysis doesn't indicate whether encryption is deliberately omitted or simply not visible in the limited iOS/Runner directory files examined. A complete assessment would require access to the full application codebase and documentation.
+                        Not identified in analysis. The system does use some encryption (HTTPS for data transmission), but justification for any missing encryption implementations is not provided in the analysis.
                     </div>
                 </div>
                 
