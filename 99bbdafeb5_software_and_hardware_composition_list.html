@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Heartypatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/patchinc/heartypatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/patchinc/heartypatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:38:34</p>
+                <p><strong>Generated:</strong> 2025-07-24 02:02:11</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer not-identified">
-                        Based on the analysis, the following software components are identified: - ESP-IDF (version unknown) [Source: main.c] - FreeRTOS (version unknown) with MIT License [Source: main.c] - MAX30003 Driver (custom proprietary driver) [Source: heartypatch_max30003.c] - mbedTLS (version unknown, included but unused) with Apache 2.0 license [Source: heartypatch_tcp_server.c]
+                        Based on the analysis, the following software components are identified: - ESP-IDF (version unknown) [Source: CMakeLists.txt] - FreeRTOS (version unknown) with MIT License [Source: main.c] - MAX30003 Driver (custom proprietary) [Source: heartypatch_max30003.c] - ESP32 Native BLE Stack (proprietary) [Source: heartypatch_ble.c] - lwIP TCP/IP Stack with BSD License [Source: kalam32_tcp_server.c] Note: Specific version numbers are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
                     <div class="answer">
-                        The analysis identifies these primary hardware components: - MAX30003 ECG Chip from Maxim Integrated [Source: heartypatch_max30003.c] - ESP32 Microcontroller from Espressif Systems [Source: main.c] - Battery voltage sensor (ADC) [Source: heartypatch_adc.c] - Internal storage (FIFO buffer) [Source: firmware/heartypatch-stream-tcp/main/max30003.c]
+                        The analysis identifies the following hardware components: - MAX30003 ECG sensor [Source: firmware/heartypatch-ble/main/heartypatch_max30003.c] - Battery voltage sensor/ADC [Source: firmware/heartypatch-ble/main/heartypatch_adc.c] - Bluetooth/WiFi capability (likely ESP32 microcontroller) [Source: firmware/heartypatch-ble/main/heartypatch_ble.c] - Internal storage (FIFO buffer) [Source: firmware/heartypatch-stream-tcp/main/max30003.c] - SPI interface [Source: max30003.c] - UART interface [Source: main.c]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
                     <div class="answer">
-                        The analysis reveals several security concerns, though specific CVEs are not mentioned: - Unencrypted data transmission over TCP and BLE [Source: heartypatch_tcp_server.c] - No authentication mechanisms for BLE services [Source: heartypatch_ble.c] - No safeguards on SPI and UART interfaces [Source: main.c] - Unused but included mbedTLS library suggests missing encryption implementation
+                        The analysis reveals several security concerns but doesn't explicitly identify known vulnerabilities. However, security risks include: - Unencrypted data transmission [Source: kalam32_tcp_server.c] - Lack of user authentication - No data encryption implementation for stored data - Basic WPA2 as only security measure for WiFi communication Further security assessment would be needed for a complete vulnerability analysis.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
                     <div class="answer not-identified">
-                        The analysis identifies only two licenses: - FreeRTOS: MIT License [Source: main.c] - mbedTLS: Apache 2.0 License [Source: heartypatch_tcp_server.c] Other component licenses are not identified in the analysis.
+                        The analysis identifies the following licenses: - FreeRTOS: MIT License [Source: main.c] - lwIP TCP/IP Stack: BSD License [Source: kalam32_tcp_server.c] Other components' licenses are either proprietary or not identified in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While we know the manufacturers (Maxim Integrated for MAX30003 and Espressif Systems for ESP32), specific manufacturing locations and sourcing information are not provided.
+                        Not identified in analysis. The device analysis does not provide information about the manufacturing locations or component sourcing.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided documentation does not include information about supply chain security measures, component authenticity verification, or secure sourcing practices.
+                        Not identified in analysis. The provided device analysis does not contain information about supply chain security measures or assessments.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While component versions are largely unknown, the analysis does not specify whether any components are deprecated or end-of-life. This would require additional investigation and comparison against manufacturer EOL notices.
+                        Not identified in analysis. While the device analysis provides component information, it does not specify whether any components are deprecated or end-of-life. Version information for most components is missing, making it impossible to determine their lifecycle status.
                     </div>
                 </div>
                 
