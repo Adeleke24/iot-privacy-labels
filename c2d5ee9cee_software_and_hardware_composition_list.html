@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Doorbell Camera</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/mtekman/doorbell-camera.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/mtekman/doorbell-camera.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:56:44</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:16:21</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
-                    <div class="answer not-identified">
-                        Based on the analysis, the following software components are identified: - ESP32 Arduino Core (version unknown) - ESP32 Camera Driver (version unknown) - SD_MMC Library (version unknown) - WiFi Library (version unknown) [Source: main.cpp, camera_pins.h] Note that specific version information is not available in the analysis.
+                    <div class="answer">
+                        Based on the analysis, the following software components are identified: - ESP32 Arduino Core (version not specified) [Source: platform.txt] - ESP32 Camera Driver (version not specified) [Source: camera_pins.h] - ArduinoJson (version not specified) [Source: camera_server.cpp] - SD_MMC Library (built-in) [Source: camera_server.cpp] Most version numbers are not explicitly stated in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
                     <div class="answer">
-                        The analysis identifies these hardware components: - ESP32 Camera Module (AI_THINKER/WROVER_KIT model) - PIR Motion Sensor - SD Card Interface - LED indicator [Source: main.cpp, camera_pins.h]
+                        The analysis identifies these hardware components: - ESP32-CAM Module (manufactured by AI-Thinker) - PIR Motion Sensor (generic) - SD Card Interface (built-in) - Camera sensor (specifications not provided) [Source: camera_pins.h, camera_server.cpp]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
                     <div class="answer">
-                        The analysis reveals several security concerns but no specific CVEs or vulnerabilities: - Unencrypted video transmission - Basic HTTP authentication only - No encryption for local storage - No secure firmware update process documented [Source: Sections 9, 11]
+                        The analysis reveals several security concerns but no specific CVEs or known vulnerabilities: - Unencrypted video storage - Basic HTTP authentication only (no encryption) - WiFi credentials stored in plaintext - No encryption for local storage [Source: camera_server.cpp, Encryption & Key Management section]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the components (ESP32 Arduino Core, Camera Driver, SD_MMC Library, WiFi Library) are noted as "Open Source," specific license information is not provided in the documentation.
+                    <div class="answer">
+                        The analysis identifies these licenses: - ESP-IDF License (ESP32 Camera Driver) - MIT License (ArduinoJson) - Arduino License (SD_MMC Library) [Source: Component Inventory & Security Analysis section]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the ESP32 Camera Module is noted as AI_THINKER/WROVER_KIT, specific manufacturing locations and component sourcing information are not provided in the documentation.
+                        Limited information is available. Only the ESP32-CAM Module is identified as manufactured by AI-Thinker in China. The origin of other components (PIR sensor, SD card interface) is listed as "Unknown" [Source: Component Inventory & Security Analysis section]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide information about supply chain security measures, vendor verification, or component authenticity validation processes.
+                        Not identified in analysis. While components are listed in the inventory, there is no specific information about supply chain security measures, verification processes, or component authenticity validation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the components are listed, their versions are unknown and there is no information about their lifecycle status or deprecation status in the provided documentation.
+                        Not identified in analysis. While components are listed as "Current" for ESP32 Arduino Core and ESP32 Camera Driver, there's no explicit information about deprecated or end-of-life status for any components.
                     </div>
                 </div>
                 
