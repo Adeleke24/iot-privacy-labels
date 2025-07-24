@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Ultimatedoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/ShVerni/UltimateDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ShVerni/UltimateDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:56:43</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:14:02</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports: - I2S interface for audio output [Source: lib/SoundPlayer/src/SoundPlayer.h] - GPIO interface for button input [Source: src/main.cpp] - SD Card slot for storage [Source: lib/Storage/src/Storage.cpp] No explicit mention of USB or Ethernet interfaces was found in the analysis.
+                        The device supports the following physical interfaces [Source: Section 12 - Ports & Protocols]: - GPIO2 for button input - GPIO1 for LED data output - I2S interface for audio output - SDIO/SPI interface for storage - USB for programming and debugging
                     </div>
                 </div>
                 
@@ -167,16 +167,16 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - HTTP for web interface and webhooks on Port 80 [Source: src/main.cpp] - WiFi for network connectivity using ESPAsyncWiFiManager [Source: src/main.cpp] - I2S protocol for audio streaming [Source: lib/SoundPlayer/src/SoundPlayer.h]
+                        The device uses the following communication protocols [Source: Section 12 - Ports & Protocols]: - HTTP for web interface communication - WiFi for network connectivity - Webhooks for external notifications - I2S for audio communication with the MAX98357A amplifier
                     </div>
                 </div>
                 
                 <div class="qa-section">
                     <div class="question">
-                        <strong>Q3:</strong> What is the justification for each interface and protocol?
+                        <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's functionality: - HTTP: Required for web-based configuration interface and webhook notifications - WiFi: Needed for network connectivity and remote access - I2S: Required for audio output functionality (doorbell sounds) - GPIO: Necessary for doorbell button input - SD Card: Provides storage for audio files and configuration
+                        Based on the device's functionality [Source: Section 0 - Executive Summary & Section 6]: - WiFi: Required for remote control and notifications - HTTP: Enables web interface for device configuration - Webhooks: Provides external notification capabilities - I2S: Necessary for audio playback functionality - GPIO: Required for basic input (button) and output (LED) functions
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - I2S: Output only for audio streaming [Source: lib/SoundPlayer/src/SoundPlayer.h] - GPIO Button: Input only, interrupt-driven [Source: src/main.cpp] - SD Card: Read/Write access [Source: lib/Storage/src/Storage.cpp] - HTTP: Web interface access and webhook communications [Source: src/main.cpp]
+                        The following access is provided [Source: Multiple sections]: - Web interface: Device configuration and control - Webhooks: External event notifications - Button input: Trigger doorbell events - LED output: Visual notifications - Audio output: Sound playback However, specific access control details are not fully documented in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        Limited information is available about security measures. The analysis shows: - SD Card: Has mounting protection [Source: lib/Storage/src/Storage.cpp] - WiFi: Uses ESPAsyncWiFiManager for configuration [Source: src/main.cpp] No specific security measures are documented for HTTP or other interfaces.
+                        Limited safeguards are documented [Source: Section 12]: - Input debouncing on button interface - Pin pull-up/down resistors implemented - Interrupt handling for button - WiFi supports WPA2/WPA3 encryption [Source: Section 11] However, notable gaps exist, particularly around HTTPS implementation and webhook security.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer not-identified">
-                        The device uses ESPAsyncWiFiManager for WiFi setup [Source: src/main.cpp], but specific secure setup procedures are not identified in the analysis. No detailed security documentation was found.
+                    <div class="answer">
+                        Not fully identified in analysis. While WiFi configuration is mentioned through WiFiConfig.cpp and web interface setup is available, specific secure setup procedures are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No evidence of MUD file implementation was found in the repository.
+                        Not identified in analysis. No mention of MUD file implementation in any of the provided documentation or source code analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions could impact privacy through: - Webhook notifications that may expose doorbell usage patterns [Source: lib/Webhooks/src/Webhooks.cpp] - Unsecured HTTP communications on port 80 [Source: src/main.cpp] - WiFi network access without specified encryption [Source: Data Transmission section] The analysis rates overall privacy risk as Medium.
+                        The device's network functions have several privacy implications [Source: Section 4 & 9]: - Webhook data exposure risks - WiFi security concerns - Data sharing capabilities with third-party partners (via webhooks) - Storage of WiFi credentials and configuration data Overall privacy risk is assessed as "Low" but privacy documentation is noted as missing.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documented ports and protocols (HTTP, WiFi, I2S) appear to be actively used for core device functionality, though the security of HTTP implementation on port 80 could pose risks without proper safeguards.
+                        Not identified in analysis. While the analysis lists active ports and protocols, it doesn't specifically identify unused or unnecessary ones. However, the analysis notes areas requiring investigation including HTTPS implementation and WiFi security hardening [Source: Section 12].
                     </div>
                 </div>
                 
