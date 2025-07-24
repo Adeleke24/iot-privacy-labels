@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Pulsesensorplayground</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/WorldFamousElectronics/PulseSensorPlayground.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/WorldFamousElectronics/PulseSensorPlayground.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:08:54</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:15:45</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        Based on the analysis, no encryption is implemented for data stored on the device. The device only uses temporary RAM storage during runtime, and the data is stored in its raw form. [Source: Section 2 - Data Collection & Storage, Section 11 - Encryption & Key Management]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis confirms local storage of heart rate data on Arduino memory [Source: PulseSensorPlayground.cpp], there is no mention of encryption methods for stored data.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile application component.
+                        Not identified in analysis. The documentation does not mention any mobile applications or their associated encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device does not utilize cloud storage according to the analysis. [Source: Section 2 - Data Collection & Storage: "Cloud Storage: No"]
+                        Not identified in analysis. The device analysis does not indicate any cloud storage capabilities or associated encryption methods.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
-                    <div class="answer">
-                        Not applicable as the device does not communicate with cloud services. The only data transmission is via local serial communication, which is unencrypted. [Source: Section 3 - Data Transmission: "Data Encrypted in Transit: No"]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis shows data transmission via Serial and Bluetooth [Source: PulseSensor_nRF52_Heartrate_Monitor_Service.ino], there is no mention of encryption methods for data in transit.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile application or cloud connectivity components.
+                        Not identified in analysis. No mobile app or cloud connectivity is mentioned in the provided documentation.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer">
-                        No cryptographic key management is implemented in the device. [Source: Section 11 - Encryption & Key Management: "Key Management | None implemented"]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation does not contain any information about cryptographic key management.
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer">
-                        No cryptographic libraries are present in the implementation. [Source: Section 11 - Encryption & Key Management: "Crypto Libraries | None present"]
+                    <div class="answer not-identified">
+                        Not identified in analysis. No cryptographic libraries are mentioned in the provided device analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, there are security concerns due to the complete lack of encryption. Raw physiological data is transmitted via serial communication without any encryption, potentially exposing sensitive health-related information. This is identified as a key concern in the Privacy Risk Assessment. [Source: Section 9 - Final Assessment: "Key Concerns: No encryption of transmitted data, raw physiological data exposure"]
+                        Yes, there appears to be a lack of encryption implementation entirely. The analysis shows that data is transmitted via Serial and Bluetooth without any mentioned encryption [Source: PulseSensorSerialOutput.cpp], which could pose security risks for sensitive biometric data.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        While no explicit justification is provided in the analysis, the device appears to be designed as a simple, local heart rate monitor with temporary data storage and real-time serial output. The lack of encryption may be due to its intended use as a non-medical educational/experimental device, as evidenced by the medical use disclaimer mentioned in Section 4. However, this still represents a security weakness that should be addressed.
+                        No explicit justification is provided in the analysis. The device appears to be designed as an open-source educational/development tool [Source: Repository Description], which may explain the simplified implementation without encryption, though this doesn't justify the absence of security measures for biometric data.
                     </div>
                 </div>
                 
