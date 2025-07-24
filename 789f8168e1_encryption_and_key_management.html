@@ -1,0 +1,247 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Encryption & Key Management Analysis - Feather Th Azure Iot</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    line-height: 1.6;
+                }
+
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+
+                .header h1 {
+                    margin: 0 0 10px 0;
+                    font-size: 2.2em;
+                    font-weight: 300;
+                }
+
+                .header p {
+                    margin: 0;
+                    opacity: 0.9;
+                    font-size: 1.1em;
+                }
+
+                .info-box {
+                    background: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    border-left: 5px solid #667eea;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .info-box p {
+                    margin: 8px 0;
+                    color: #555;
+                }
+
+                .info-box strong {
+                    color: #333;
+                }
+
+                .content-box {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;
+                }
+
+                .qa-section {
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .qa-section:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .question {
+                    color: #2c3e50;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                .answer {
+                    color: #555;
+                    font-size: 1em;
+                    line-height: 1.7;
+                    padding: 15px 20px;
+                    background: #fdfdfd;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+
+                .answer strong {
+                    color: #2c3e50;
+                }
+
+                .source-ref {
+                    color: #6c757d;
+                    font-style: italic;
+                    font-size: 0.9em;
+                }
+
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 25px;
+                    color: #6c757d;
+                    font-size: 0.9em;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .not-identified {
+                    color: #dc3545;
+                    font-style: italic;
+                }
+
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    body {
+                        padding: 10px;
+                    }
+
+                    .header h1 {
+                        font-size: 1.8em;
+                    }
+
+                    .content-box, .info-box {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Encryption & Key Management Analysis</h1>
+                <p>IoT Security Analysis for Feather Th Azure Iot</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Device:</strong> Feather Th Azure Iot</p>
+                <p><strong>Repository:</strong> <a href="https://github.com/bwyatt/feather-th-azure-iot.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/bwyatt/feather-th-azure-iot.git</a></p>
+                <p><strong>Analysis Type:</strong> Question-based security assessment</p>
+                <p><strong>Generated:</strong> 2025-07-24 01:59:59</p>
+            </div>
+
+            <div class="content-box">
+                <div class="qa-content">
+                    
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q1:</strong> What encryption methods are used for data stored on the device?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation indicates no local storage of sensor data on the device, so there are no encryption methods to analyze for data at rest on the device. [Source: Data Collection & Storage section]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis does not mention any mobile applications associated with this IoT temperature and humidity monitor.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device is designed to connect to Azure IoT [Source: README.md], specific cloud storage encryption methods are not detailed in the provided analysis.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. While WiFi transmission to Azure IoT is mentioned [Source: Data Transmission section], the specific encryption methods for data in transit are not detailed.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. No mobile application is mentioned in the device analysis.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device connects to Azure IoT, the key management infrastructure and processes are not detailed in the provided documentation.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device uses CircuitPython v8.x (alpha) [Source: Repository Information], but specific cryptographic libraries are not mentioned.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
+                    </div>
+                    <div class="answer">
+                        Cannot be fully assessed due to lack of encryption implementation details in the analysis. The absence of documented encryption methods for data in transit to Azure IoT could be a potential security concern that warrants further investigation.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q9:</strong> If no encryption is used, what is the justification?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. No explicit justification is provided for the presence or absence of encryption in the analyzed documentation.
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Generated by IoT Privacy Label Generator</strong></p>
+                <p>This analysis is based on available documentation and code review.</p>
+                <p>Questions are answered using AI analysis of the device's source code and documentation.</p>
+            </div>
+        </body>
+        </html>
+        
