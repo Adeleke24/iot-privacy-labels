@@ -1,0 +1,247 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Encryption & Key Management Analysis - Ultimatedoorbell</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    line-height: 1.6;
+                }
+
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+
+                .header h1 {
+                    margin: 0 0 10px 0;
+                    font-size: 2.2em;
+                    font-weight: 300;
+                }
+
+                .header p {
+                    margin: 0;
+                    opacity: 0.9;
+                    font-size: 1.1em;
+                }
+
+                .info-box {
+                    background: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    border-left: 5px solid #667eea;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .info-box p {
+                    margin: 8px 0;
+                    color: #555;
+                }
+
+                .info-box strong {
+                    color: #333;
+                }
+
+                .content-box {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;
+                }
+
+                .qa-section {
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .qa-section:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .question {
+                    color: #2c3e50;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                .answer {
+                    color: #555;
+                    font-size: 1em;
+                    line-height: 1.7;
+                    padding: 15px 20px;
+                    background: #fdfdfd;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+
+                .answer strong {
+                    color: #2c3e50;
+                }
+
+                .source-ref {
+                    color: #6c757d;
+                    font-style: italic;
+                    font-size: 0.9em;
+                }
+
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 25px;
+                    color: #6c757d;
+                    font-size: 0.9em;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .not-identified {
+                    color: #dc3545;
+                    font-style: italic;
+                }
+
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    body {
+                        padding: 10px;
+                    }
+
+                    .header h1 {
+                        font-size: 1.8em;
+                    }
+
+                    .content-box, .info-box {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Encryption & Key Management Analysis</h1>
+                <p>IoT Security Analysis for Ultimatedoorbell</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Device:</strong> Ultimatedoorbell</p>
+                <p><strong>Repository:</strong> <a href="https://github.com/ShVerni/UltimateDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ShVerni/UltimateDoorbell.git</a></p>
+                <p><strong>Analysis Type:</strong> Question-based security assessment</p>
+                <p><strong>Generated:</strong> 2025-07-24 00:19:43</p>
+            </div>
+
+            <div class="content-box">
+                <div class="qa-content">
+                    
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q1:</strong> What encryption methods are used for data stored on the device?
+                    </div>
+                    <div class="answer">
+                        No encryption methods for data stored on the device were identified in the analysis. The device uses LittleFS and optional SD card storage [Source: lib/Storage/src/Storage.cpp], but no encryption implementation is documented or visible in the codebase.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
+                    </div>
+                    <div class="answer">
+                        Not applicable - no mobile application is present in this system according to the device analysis.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
+                    </div>
+                    <div class="answer">
+                        Not applicable - no cloud storage component is identified in the system architecture. The device only uses webhook notifications for external communication [Source: lib/Webhooks/src/Webhooks.cpp].
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
+                    </div>
+                    <div class="answer">
+                        No encryption methods for data in transit were identified in the analysis. The device uses HTTP for web interface and webhook communications [Source: src/main.cpp] with no visible security measures implemented.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
+                    </div>
+                    <div class="answer">
+                        Not applicable - no mobile application or cloud component is present in this system according to the device analysis.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
+                    </div>
+                    <div class="answer">
+                        No cryptographic key generation, storage, or management systems were identified in the analysis. No encryption implementation is visible in the codebase.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
+                    </div>
+                    <div class="answer">
+                        No dedicated cryptographic libraries were identified in the component inventory or codebase analysis [Source: Component Inventory section].
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
+                    </div>
+                    <div class="answer">
+                        Yes, there are significant security concerns due to the complete absence of encryption. The device transmits data over HTTP without encryption [Source: src/main.cpp], stores data without encryption, and has no secure communication protocols implemented for webhook notifications.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q9:</strong> If no encryption is used, what is the justification?
+                    </div>
+                    <div class="answer">
+                        No explicit justification for the lack of encryption is provided in the analysis or documentation. This appears to be a security oversight rather than a deliberate design choice, as the device handles potentially sensitive data like home occupancy patterns through doorbell usage.
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Generated by IoT Privacy Label Generator</strong></p>
+                <p>This analysis is based on available documentation and code review.</p>
+                <p>Questions are answered using AI analysis of the device's source code and documentation.</p>
+            </div>
+        </body>
+        </html>
+        
