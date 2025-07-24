@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Anemometer</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/taunusflieger/anemometer.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/taunusflieger/anemometer.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:58:35</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:35:28</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        Based on the analysis, no encryption is implemented for data stored locally on the device. This is evidenced in [Source: src/data_processing.rs] where raw data storage is indicated, and confirmed in Section 11 which specifically notes "Device Storage | None | N/A". This represents a potential security vulnerability.
+                        Based on the analysis, data stored locally on the device appears to have limited encryption. Configuration data is stored with NVS encryption [Source: anemometer-production/src/configuration.rs], but SD card storage is not encrypted [Source: anemometer-calibration/src/sdmmc.rs]. The specific encryption method for NVS is not detailed in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention or provide evidence of any mobile application component or its associated encryption methods.
+                        Not identified in analysis. The provided device analysis does not mention or include any mobile application components.
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis confirms cloud storage exists via AWS IoT Core [Source: src/services.rs], the specific encryption methods for data at rest in the cloud are not detailed in the provided analysis.
+                    <div class="answer">
+                        Not clearly identified in analysis. While the device uses AWS IoT Core for cloud storage [Source: anemometer-production/src/services.rs], the specific encryption methods for cloud-stored data are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        TLS 1.2+ is used for data in transit to the cloud, specifically utilizing AWS IoT certificates for security. This is implemented through MQTT protocol with TLS certificate-based authentication [Source: src/services.rs, src/task/mqtt.rs].
+                        Data in transit uses MQTT over TLS 1.2+ with AWS IoT certificates for cloud communication [Source: anemometer-production/src/task/mqtt.rs, anemometer-production/src/services.rs]. The encryption is managed through AWS IoT managed keys.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application component or related encryption methods are mentioned in the device analysis.
+                        Not identified in analysis. No mobile application component is mentioned in the device analysis.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis indicates that AWS X.509 certificates are stored in a secure element [Source: src/configuration.rs]. However, specific details about key generation and rotation mechanisms are listed under "Areas Requiring Further Investigation" and "Areas with Unknown Status", indicating incomplete information about the full key management lifecycle.
+                    <div class="answer">
+                        The analysis shows that AWS IoT certificates are used for cloud communication [Source: anemometer-production/src/services.rs], but specific details about key generation, storage, and management processes are not provided. AWS IoT managed keys are mentioned for transit data encryption, but the implementation details are not specified.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer">
-                        The analysis does not explicitly identify specific cryptographic libraries. While it mentions the ESP32-S3 SDK and AWS IoT SDK [Source: Cargo.toml], their cryptographic components and versions are not detailed.
+                        Not explicitly identified in analysis. While the device uses the ESP32 SDK and AWS IoT SDK [Source: anemometer-production/Cargo.toml], specific cryptographic libraries and their versions are not detailed.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are evident: 1. Lack of local data encryption [Source: src/data_processing.rs] 2. Open HTTP endpoints without encryption [Source: src/services.rs] 3. Unspecified key rotation mechanisms 4. No documented secure boot verification [Source: Areas Requiring Further Investigation section]
+                        Yes, several security concerns are evident: 1. Lack of encryption for local storage on SD card [Source: anemometer-calibration/src/sdmmc.rs] 2. Web interface lacks authentication [Source: anemometer-calibration/src/web_server.rs] 3. Incomplete documentation of encryption implementations 4. Limited authentication mechanisms
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        No justification is provided in the analysis for the lack of local data encryption. This appears to be a security oversight rather than a justified design decision, particularly given that the device collects sensitive data including GPS locations and transmits data to cloud services using encryption.
+                        No explicit justification is provided for the lack of encryption, particularly for local storage on the SD card. This appears to be a security gap rather than a justified design decision based on the analysis provided.
                     </div>
                 </div>
                 
