@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:55:56</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:38:22</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer not-identified">
-                        Based on the analysis, the following software components are identified: - ESP32 Core (version unknown) [Source: platform.txt] - GxEPD Library (version unknown) [Source: Watchy_7_SEG.cpp] - OpenWeatherMap API Client (custom implementation) [Source: settings.h] - NTP Client (built-in) [Source: settings.h] However, specific version numbers are not identified in the analysis.
+                        Based on the analysis, the following software components are identified: - ESP32 Arduino Core (version not specified) - GxEPD Library v2.x (LGPL licensed) - ArduinoJson v6.x (MIT licensed) - BMA423 Driver (version unknown, proprietary) [Source: platform.ini, library.json, Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis identifies the following hardware components: - E-Paper display [Source: Watchy_7_SEG.cpp] - Accelerometer sensor [Source: Watchy_7_SEG.cpp] - Battery sensor [Source: Watchy_7_SEG.cpp] - WiFi module [Source: settings.h] - Bluetooth module [Source: settings.h] - Flash memory for storage [Source: Component Inventory] - I2C and SPI interfaces [Source: Ports & Protocols section] Specific hardware model numbers or manufacturers are not identified in the analysis.
+                    <div class="answer">
+                        The analysis identifies these hardware components: - ESP32 microcontroller with flash memory - E-Paper display - Accelerometer (BMA423) - Battery monitoring system - WiFi module - Bluetooth module - RTC (Real-Time Clock) [Source: Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions "Areas Requiring Further Investigation" including security concerns like encryption implementation and firmware updates, it does not specifically identify any known vulnerabilities in the components.
+                    <div class="answer">
+                        Not explicitly identified in analysis. While the analysis mentions "plain text API keys" and "unencrypted data transmission" as security concerns [Source: Section 9 - Privacy Risk Level], specific CVEs or known vulnerabilities are not detailed.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
                     <div class="answer">
-                        The analysis only identifies one specific license: - GxEPD Library: GPL license [Source: Component Inventory] Licenses for other components are not explicitly stated in the analysis.
+                        The analysis identifies: - GxEPD Library: LGPL license - ArduinoJson: MIT license - BMA423 Driver: Proprietary [Source: Section 10 - Component Inventory & Security Analysis]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The manufacturing and sourcing information for hardware components is not provided in the device analysis.
+                        Not identified in analysis. The manufacturer SQFMI is mentioned [Source: Executive Summary], but component sourcing information is not provided.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not include information about supply chain security measures or component sourcing security.
+                        Not identified in analysis. While the device uses various components, their supply chain security details are not documented in the provided analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis includes component information, it does not specify whether any components are deprecated or end-of-life.
+                        Not identified in analysis. While component versions are partially documented, there is no specific mention of deprecated or end-of-life status for any components.
                     </div>
                 </div>
                 
