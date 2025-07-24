@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Zswatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/ZSWatch/ZSWatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ZSWatch/ZSWatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:08:39</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:07:13</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer not-identified">
-                        The device uses LittleFS encryption with hardware-based key storage for data stored on the QSPI flash memory. [Source: app/scripts/filesystem_utils.py]. However, specific encryption algorithms and key lengths are not identified in the analysis.
+                    <div class="answer">
+                        Based on the analysis, no explicit encryption is identified for data stored on the device's QSPI flash storage. The device uses LittleFS for file system management, but there's no evidence of storage encryption implementation. [Source: app/scripts/rtt_flash_loader.py, app/src/basic_battery/battery.c]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not provide specific information about mobile application data storage encryption methods.
+                        Not identified in analysis. The repository focuses on device-side code and doesn't contain information about mobile application data storage encryption.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While cloud communication uses TLS 1.2+ [Source: website/src/components/SubscriptionForm/index.js], specific cloud storage encryption methods are not detailed.
+                        Not identified in analysis. The repository doesn't contain information about cloud storage or its encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis shows two layers of encryption for device-to-cloud communication: - BLE communication uses L2CAP Security Level 2 [Source: app/src/ble/ble_comm.c] - Cloud communication implements TLS 1.2+ [Source: website/src/components/SubscriptionForm/index.js]
+                        The device uses Bluetooth Low Energy (BLE) Security Level 2 (BT_SECURITY_L2) for wireless communication, which includes encryption and authentication. However, direct device-to-cloud communication is not documented in the analysis. [Source: app/src/ble/ble_comm.c]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided documentation does not specify encryption methods for mobile app to cloud communication.
+                        Not identified in analysis. The repository doesn't contain information about mobile app to cloud communication.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis indicates hardware-based key storage is used [Source: app/scripts/filesystem_utils.py], but specific details about key generation and management processes are not provided. For firmware updates, signed images are used for verification [Source: website/src/pages/update.js].
+                        The only documented key management relates to BLE pairing keys, which are handled through standard BLE pairing protocols. No additional cryptographic key management systems are identified in the analysis. [Source: app/src/ble/ble_comm.c]
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the device uses various software components including Zephyr RTOS and Nordic SDK, specific cryptographic libraries and their versions are not detailed.
+                    <div class="answer">
+                        No specific cryptographic libraries are identified in the analysis. The device relies on built-in BLE security features from the Nordic SDK and Zephyr RTOS, but versions of any crypto-specific libraries are not documented. [Source: app/west.yml]
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Based on the analysis, several potential security concerns exist: - Limited documentation on cryptographic implementations - Unspecified mobile app security measures - Unclear key management procedures - Bluetooth exposure risks noted in Privacy Risk Level assessment [Source: Section 9 - Privacy Risk Level]
+                        Yes, several security concerns are evident: 1. Lack of encryption for local data storage 2. Reliance only on basic BLE security features 3. No documented additional encryption layers for sensitive sensor data 4. No explicit protection for QSPI flash storage access [Source: app/src/ble/ble_comm.c, app/scripts/rtt_flash_loader.py]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        Not applicable - the device does implement encryption through multiple mechanisms including: - LittleFS encryption for device storage - L2CAP Security Level 2 for BLE communication - TLS 1.2+ for cloud communication [Source: Section 11 - Encryption & Key Management]
+                        No explicit justification is provided in the analysis for the lack of encryption. This appears to be a security oversight rather than a justified design decision, particularly concerning for a device collecting sensitive health and location data. [Source: Section 11: ENCRYPTION & KEY MANAGEMENT]
                     </div>
                 </div>
                 
