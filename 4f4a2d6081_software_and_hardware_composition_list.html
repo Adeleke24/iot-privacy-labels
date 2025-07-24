@@ -1,0 +1,229 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Software & Hardware Component Analysis - Protocentral Healthypi V3</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    line-height: 1.6;
+                }
+
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+
+                .header h1 {
+                    margin: 0 0 10px 0;
+                    font-size: 2.2em;
+                    font-weight: 300;
+                }
+
+                .header p {
+                    margin: 0;
+                    opacity: 0.9;
+                    font-size: 1.1em;
+                }
+
+                .info-box {
+                    background: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    border-left: 5px solid #667eea;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .info-box p {
+                    margin: 8px 0;
+                    color: #555;
+                }
+
+                .info-box strong {
+                    color: #333;
+                }
+
+                .content-box {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;
+                }
+
+                .qa-section {
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .qa-section:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .question {
+                    color: #2c3e50;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                .answer {
+                    color: #555;
+                    font-size: 1em;
+                    line-height: 1.7;
+                    padding: 15px 20px;
+                    background: #fdfdfd;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+
+                .answer strong {
+                    color: #2c3e50;
+                }
+
+                .source-ref {
+                    color: #6c757d;
+                    font-style: italic;
+                    font-size: 0.9em;
+                }
+
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 25px;
+                    color: #6c757d;
+                    font-size: 0.9em;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .not-identified {
+                    color: #dc3545;
+                    font-style: italic;
+                }
+
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    body {
+                        padding: 10px;
+                    }
+
+                    .header h1 {
+                        font-size: 1.8em;
+                    }
+
+                    .content-box, .info-box {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Software & Hardware Component Analysis</h1>
+                <p>IoT Security Analysis for Protocentral Healthypi V3</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Device:</strong> Protocentral Healthypi V3</p>
+                <p><strong>Repository:</strong> <a href="https://github.com/Protocentral/protocentral-healthypi-v3.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Protocentral/protocentral-healthypi-v3.git</a></p>
+                <p><strong>Analysis Type:</strong> Question-based security assessment</p>
+                <p><strong>Generated:</strong> 2025-07-24 00:45:49</p>
+            </div>
+
+            <div class="content-box">
+                <div class="qa-content">
+                    
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
+                    </div>
+                    <div class="answer not-identified">
+                        Based on the analysis, the following software components are identified: - ADS1292R Driver (version unknown) from Texas Instruments [Source: ads1292r.h] - MAX30205 Driver (version unknown) from Maxim Integrated [Source: max30205.h] - LED Control System (version unknown) - custom implementation [Source: max30205.h] No version information is explicitly provided in the analysis for any of these components.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q2:</strong> What hardware components are present in this device?
+                    </div>
+                    <div class="answer">
+                        The analysis identifies the following hardware components: - ADS1292R biopotential sensor [Source: ads1292r.h] - MAX30205 temperature sensor [Source: max30205.h] - LED sensors/indicators [Source: max30205.h] - I2C and SPI communication interfaces [Source: max30205.h, ads1292r.h] - Internal storage hardware (register-based) [Source: Component Inventory section]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The provided device analysis does not include any vulnerability assessment or mention of known security issues in the components.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q4:</strong> What licenses are used for third-party software components?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis does not contain information about software licensing for any of the components.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
+                    </div>
+                    <div class="answer">
+                        The analysis only identifies that some components are from Texas Instruments (ADS1292R) and Maxim Integrated (MAX30205), but does not specify manufacturing locations or sourcing details for any components.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q6:</strong> What is the supply chain security posture of the components?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The provided device analysis does not include information about supply chain security measures or assessments.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis does not provide information about the lifecycle status of any components or indicate whether any are deprecated or end-of-life.
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Generated by IoT Privacy Label Generator</strong></p>
+                <p>This analysis is based on available documentation and code review.</p>
+                <p>Questions are answered using AI analysis of the device's source code and documentation.</p>
+            </div>
+        </body>
+        </html>
+        
