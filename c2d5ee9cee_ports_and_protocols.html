@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Doorbell Camera</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/mtekman/doorbell-camera.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/mtekman/doorbell-camera.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:56:46</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:16:50</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports: - SD Card Slot for storage with full read/write access [Source: main.cpp] - USB interface (presumed for programming/debugging) [Source: main.cpp] - Camera interface using I2C protocol [Source: camera_pins.h] No Ethernet port is identified in the analysis.
+                        Based on the analysis, the device supports the following physical interfaces: - USB interface for programming and power [Source: README.md] - SD Card slot for storage [Source: camera_pins.h] - GPIO pins for sensor input [Source: camera_pins.h] No Ethernet port is identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - WiFi for device control and video streaming using HTTP protocol [Source: main.cpp] - I2C for internal camera control [Source: camera_pins.h] - SD_MMC protocol for SD card communication [Source: main.cpp]
+                        The device uses the following protocols: - HTTP for web interface and video streaming [Source: camera_server.cpp] - WiFi for network connectivity (both AP and Station modes) [Source: camera_server.cpp] - SPI for SD card interface [Source: camera_pins.h]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Each interface serves a specific purpose: - WiFi: Required for video streaming and device control via web dashboard - I2C: Necessary for camera module control and operation - SD Card: Required for local storage of video recordings and event logs - USB: Needed for device programming and debugging [Source: main.cpp, camera_pins.h]
+                        Each interface serves a specific purpose: - USB: Required for device programming and power supply [Source: README.md] - SD Card: Necessary for local storage of video recordings and configuration [Source: camera_pins.h] - HTTP: Enables web interface access and video streaming functionality [Source: camera_server.cpp] - WiFi: Provides network connectivity for remote access [Source: camera_server.cpp] - SPI: Required for SD card communication [Source: camera_pins.h]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - SD Card: Full read/write access for storage operations - USB: Full access for programming/debugging - WiFi: HTTP access with basic authentication - I2C: Internal-only access, hardware limited [Source: main.cpp, Section 12]
+                        The analysis shows: - USB: Full access for programming/power [Source: README.md] - SD Card: Read/Write access for storage [Source: camera_pins.h] - GPIO: Input-only access for sensors [Source: camera_pins.h] - HTTP: Full access to web interface and streaming with basic authentication [Source: camera_server.cpp] - WiFi: Network access with WPA2 capability [Source: camera_server.cpp]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis reveals minimal security measures: - WiFi: Basic HTTP authentication only - I2C: Hardware-limited access - SD Card: No protection mechanisms identified - USB: No protection mechanisms identified This indicates significant security gaps in interface protection [Source: Section 11, 12]
+                        Limited safeguards are identified: - WiFi: WPA2 capability for network security [Source: camera_server.cpp] - HTTP: Basic authentication only [Source: camera_server.cpp] - GPIO: Hardware-limited access [Source: camera_pins.h] Most interfaces lack robust security measures, with no encryption for stored data or advanced access controls identified.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Limited documentation is provided for secure setup procedures. The analysis indicates basic WiFi configuration capabilities but lacks detailed secure setup guidance. This is identified as an area requiring further investigation [Source: Section 12]
+                        Not fully identified in analysis. While the device supports WiFi configuration and basic HTTP authentication, no specific secure setup procedure is documented. The analysis indicates configuration parameters are stored in plaintext [Source: settings.h], suggesting security vulnerabilities in the setup process.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No evidence of MUD file implementation was found in the repository documentation or code.
+                        Not identified in analysis. No evidence of a MUD file was found in the provided repository information.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        Several privacy concerns are identified: - Unencrypted video transmission over WiFi - Basic HTTP authentication only - No encryption for stored data - Collection of identifiable data (video recordings) - Potential for occupancy pattern inference [Source: Section 9, Data Collection Summary]
+                        Several privacy concerns are identified: - Unencrypted video storage and transmission [Source: camera_server.cpp] - Basic HTTP authentication only [Source: camera_server.cpp] - Face detection capabilities without documented privacy controls [Source: main.cpp] - No documented data retention policy - WiFi credentials stored in plaintext [Source: settings.h]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer">
-                        The analysis shows Bluetooth capability in the ESP32 hardware but is not implemented, which could pose a security risk if accidentally enabled. Otherwise, all identified ports and protocols appear to serve necessary functions, though their implementation lacks proper security measures [Source: Section 1, ESP32 hardware capabilities]
+                        The analysis shows: - Bluetooth capability is present but unused [Source: main.cpp], which could pose a security risk if accidentally enabled - HTTP is used instead of HTTPS, presenting unnecessary security risks [Source: camera_server.cpp] - No evidence of port hardening or unnecessary port closure is documented
                     </div>
                 </div>
                 
