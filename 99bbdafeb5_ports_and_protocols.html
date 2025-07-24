@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Heartypatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/patchinc/heartypatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/patchinc/heartypatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:02:41</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:51:44</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports the following physical interfaces: - SPI: Used for sensor communication with MAX30003 ECG sensor - UART: Used as debug interface - WiFi: Wireless interface for TCP data streaming - BLE: Wireless interface for health data service [Source: Section 12 - Ports & Protocols]
+                        The device supports the following physical interfaces: - USB: Used for device programming and power [Source: kalam32.h] - SPI: Used for internal sensor communication [Source: max30003.c] No Ethernet interface is identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses multiple communication protocols: - SPI protocol for ECG sensor communication - UART protocol for debugging - TCP/IP for data streaming over WiFi - Bluetooth Low Energy (BLE) for health data services - lwIP stack for TCP/IP implementation [Source: Section 10 - Component Inventory & Security Analysis, Section 12 - Ports & Protocols]
+                        The device uses the following protocols: - TCP on port 4567 for data streaming - Bluetooth Low Energy (BLE) for heart rate service - WiFi for network connectivity - SPI for internal sensor communication [Source: heartypatch_tcp_server.c, heartypatch_ble.c, max30003.c]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Each interface serves a specific purpose: - SPI: Required for communicating with the MAX30003 ECG sensor for data acquisition - UART: Necessary for debugging and development purposes - WiFi/TCP: Enables real-time data streaming to server - BLE: Provides wireless health data transmission to mobile devices [Source: Section 12 - Ports & Protocols, Section 3 - Data Transmission]
+                        Based on the analysis: - TCP: Enables real-time ECG data streaming to clients - BLE: Provides heart rate service data to mobile devices - WiFi: Enables network connectivity for TCP streaming - SPI: Required for communication with MAX30003 ECG sensor - USB: Necessary for device programming and power supply [Source: Section 12 - Ports & Protocols]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows the following access levels: - SPI: Full access for sensor communication - UART: Full access for debug interface - WiFi: Full access for TCP data streaming - BLE: Read/Notify permissions for health data service [Source: Section 12 - Ports & Protocols]
+                        The analysis shows: - USB: Limited access for programming and power - SPI: Internal-only access for sensor communication - TCP: Port 4567 open for data streaming, no authentication - BLE: Standard ports with stack security for heart rate service - WiFi: Standard ports with WPA2 security [Source: Section 12 - Ports & Protocols]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis reveals minimal security safeguards: - SPI: Hardware PIN isolation only - UART: No safeguards identified - WiFi: Basic WPA2 security - BLE: No specific safeguards identified This indicates significant security gaps in interface protection. [Source: Section 12 - Ports & Protocols]
+                        The identified safeguards are: - USB: Hardware protection measures (unspecified) - SPI: Hardware restricted access - BLE: Standard stack security features - WiFi: WPA2 security - TCP: No specific safeguards identified Note that the analysis indicates a lack of authentication for TCP connections, which is a security concern. [Source: Section 12 - Ports & Protocols]
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions WiFi SSID setup and device configuration capabilities, specific secure setup procedures are not documented in the provided information.
+                    <div class="answer">
+                        Not fully identified in analysis. While the device supports WiFi with WPA2 security and requires WiFi SSID setup [Source: Section 8], specific secure setup procedures are not documented in the provided analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No evidence of MUD file implementation was found in the provided repository analysis.
+                        Not identified in analysis. No mention of MUD file implementation is found in any of the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions pose several privacy concerns: - Unencrypted data transmission of sensitive health data - No user authentication mechanisms identified - Raw physiological data collection without anonymization - Real-time data transmission without apparent privacy controls [Source: Section 9 - Final Assessment, Section 3 - Data Transmission]
+                        The analysis reveals several privacy concerns: - Unencrypted data transmission - Lack of user authentication - Raw physiological data exposure through TCP streaming - No documented privacy policies or data handling procedures [Source: Section 9 - Privacy Risk Level]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis documents the active interfaces and protocols, it doesn't specifically identify unused or unnecessary ports. However, the debug UART interface could potentially pose security risks if left accessible in production devices.
+                    <div class="answer">
+                        Not explicitly identified in analysis. While the analysis documents the active ports and protocols (TCP 4567, BLE, WiFi, SPI, USB), it doesn't specify whether any unnecessary ports or protocols are present. However, the lack of authentication on TCP port 4567 poses a security risk [Source: Section 12].
                     </div>
                 </div>
                 
