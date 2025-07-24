@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:08:49</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:14:07</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        According to the analysis, AES-256 encryption is used for device storage [Source: lib/services/auth_service.dart]. However, specific implementation details and validation of this encryption are not provided in the analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis documentation shows no explicit mention of encryption methods for local data storage. While the device collects sensitive health data including heart rate, SpO2, and temperature measurements [Source: FYP_MAIN_CODE.ino], there is no documentation of encryption implementation for data stored locally on the device.
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
-                    <div class="answer">
-                        Not explicitly identified in analysis. While the mobile app is developed using Flutter and integrates with Firebase, specific encryption methods for local mobile app storage are not detailed in the provided information.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the system includes a mobile application built with Flutter Framework [Source: README.md], there is no documentation regarding encryption methods for data stored within the mobile application.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer">
-                        The analysis indicates Firebase encryption is used for cloud storage [Source: lib/services/auth_service.dart], but the specific encryption methods and standards are not detailed. Firebase typically provides server-side encryption by default, but implementation details are not specified in the analysis.
+                        The system uses Firebase's default encryption for cloud storage [Source: Encryption & Key Management section]. However, specific encryption methods and configurations are not documented. Firebase typically provides encryption at rest by default, but without explicit documentation, the exact implementation cannot be verified.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
-                    <div class="answer">
-                        TLS 1.3 is used for data in transit [Source: lib/services/auth_service.dart]. This is mentioned in the Encryption & Key Management section of the analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device transmits data to Firebase cloud database via WiFi every 20 seconds [Source: Data Transmission section], there is no documentation of encryption methods for data in transit. This represents a potential security concern given the sensitive nature of the health data being transmitted.
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
-                    <div class="answer">
-                        Not specifically identified in analysis. While TLS 1.3 is mentioned for transit encryption, it's not explicitly stated whether this applies to mobile app-cloud communication.
+                    <div class="answer not-identified">
+                        Not identified in analysis. Though the system uses Firebase RTDB for communication between the mobile app and cloud [Source: Component Inventory], specific encryption methods for this data transmission are not documented.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer">
-                        The analysis only mentions that Firebase Authentication is used for key management [Source: lib/services/auth_service.dart]. Specific details about key generation, storage, and lifecycle management are not provided.
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation contains no information about cryptographic key generation, storage, or management processes [Source: Encryption & Key Management section].
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses Firebase Auth and Flutter framework, specific cryptographic libraries and their versions are not detailed.
+                        Not identified in analysis. No cryptographic libraries are mentioned in the component inventory or other sections of the documentation.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
-                    <div class="answer not-identified">
-                        Based on the analysis, there are several areas of concern: 1. Incomplete documentation of encryption implementations 2. Unknown status of offline data protection measures 3. Limited information about key management practices 4. No mention of encryption validation or testing [Source: Areas Requiring Further Investigation section]
+                    <div class="answer">
+                        Yes, there are significant security concerns: 1. Lack of documented encryption for sensitive health data storage and transmission 2. No specified key management procedures 3. No documented encryption for device-to-cloud communication 4. Absence of encryption documentation for mobile application data [Source: Encryption & Key Management section, Privacy Risk Level assessment]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        Not applicable - the analysis indicates encryption is implemented through AES-256 for device storage, Firebase encryption for cloud storage, and TLS 1.3 for transit security. However, comprehensive details about implementation are lacking.
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation provides no justification for the apparent lack of encryption. Given that the device handles sensitive health data [Source: Executive Summary], the absence of documented encryption measures represents a significant security and privacy risk that requires immediate attention.
                     </div>
                 </div>
                 
