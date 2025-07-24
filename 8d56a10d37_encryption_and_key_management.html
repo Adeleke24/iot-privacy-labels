@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:05:31</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:56:08</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device analysis confirms local storage of sensor data, program memory usage, and device settings, there is no explicit mention of encryption methods for stored data. [Source: Section 2 - DATA COLLECTION & STORAGE, Section 11 - ENCRYPTION & KEY MANAGEMENT]
+                        Not identified in analysis. While the device analysis confirms local storage of sensor data (step counts, battery levels) in flash memory, there is no explicit mention of encryption methods used for stored data.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions data transmission to a mobile app via Bluetooth, there is no information about mobile application data storage encryption.
+                        Not identified in analysis. The device analysis does not mention any companion mobile applications or their encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Though the device analysis confirms cloud data transmission and storage [Source: Section 3 - DATA TRANSMISSION], specific cloud storage encryption methods are not detailed.
+                        Not identified in analysis. While the analysis mentions interaction with OpenWeatherMap API, there is no information about cloud storage or its encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        Standard HTTPS is used for cloud communication, as identified in the encryption specifications [Source: Section 11 - ENCRYPTION & KEY MANAGEMENT]. However, specific implementation details and cipher suites are not provided.
+                        The analysis indicates standard HTTPS is used for weather API calls [Source: Section 12 - Ports & Protocols]. However, specific TLS version and cipher suites are not detailed. NTP communication for time synchronization is noted as unencrypted.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While data sharing between components is mentioned, specific encryption methods for mobile app-to-cloud communication are not detailed.
+                        Not identified in analysis. No information about mobile app communication is present in the device analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis reveals concerning practices regarding key management. API keys are stored in plain text and exposed in settings [Source: Section 11 - ENCRYPTION & KEY MANAGEMENT]. No information is provided about key generation or rotation policies. The analysis specifically notes "Weak key management practices observed."
+                        The analysis indicates API keys are hardcoded [Source: Section 11 - Encryption & Key Management], which is a security concern. No information is provided about key generation or rotation processes. WiFi credentials appear to be stored but the storage method is not specified.
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer">
-                        No dedicated encryption libraries were identified in the analysis. The device appears to rely on default ESP32 security features [Source: Section 11 - ENCRYPTION & KEY MANAGEMENT].
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis lists several software components and dependencies, no specific cryptographic libraries are identified [Source: Section 10 - Component Inventory].
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are identified: - Exposed API keys in plain text - Lack of dedicated encryption libraries - Weak key management practices - No documented encryption for local storage [Source: Section 9 - FINAL ASSESSMENT, Section 11 - ENCRYPTION & KEY MANAGEMENT]
+                        Yes, several security concerns are identified: - Hardcoded API keys [Source: Section 11] - Unencrypted NTP communication [Source: Section 12] - Missing encryption documentation [Source: Section 9] - No specified secure storage mechanism for sensitive data
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        No explicit justification is provided in the analysis for the lack of encryption. This appears to be a security oversight rather than a justified design decision, as the analysis lists encryption implementation details under "Areas Requiring Further Investigation" [Source: Section 12 - PORTS & PROTOCOLS].
+                    <div class="answer not-identified">
+                        Not identified in analysis. The analysis does not provide any justification for missing encryption. This is listed as an "Area Requiring Further Investigation" in Section 12 of the analysis.
                     </div>
                 </div>
                 
