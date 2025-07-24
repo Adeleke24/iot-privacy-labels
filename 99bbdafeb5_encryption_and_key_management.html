@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Heartypatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/patchinc/heartypatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/patchinc/heartypatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:02:22</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:51:29</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        Based on the analysis, no encryption is implemented for data stored on the device. The device uses FIFO buffers for temporary storage of ECG data and battery readings without encryption. [Source: Section 11 - Encryption & Key Management]
+                        The device does not implement any encryption for stored data. The analysis indicates that there is no local storage on the device, and therefore no encryption is implemented for device storage. [Source: Section 2 - Data Collection & Storage, Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device has BLE capabilities for mobile connectivity, there is no information about a mobile application's data storage encryption methods.
+                        Not identified in analysis. The device analysis does not provide information about mobile application data storage or encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device has TCP data transmission capabilities, but there is no information about cloud storage or its encryption methods in the provided analysis.
+                        Not identified in analysis. The device analysis indicates cloud storage details are unknown and listed as an "Area Requiring Further Investigation" [Source: Section 12]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        No encryption is implemented for data in transit. The analysis specifically notes that device-cloud transit has "No encryption" [Source: Section 11 - Encryption & Key Management]. The only security measure appears to be basic WPA2 for WiFi communications [Source: Section 12 - Ports & Protocols].
+                        The analysis shows no encryption is implemented for data in transit via TCP streaming. Only network-level WPA2 encryption is present for WiFi communications. [Source: Section 11 - Encryption & Key Management, Section 3 - Data Transmission]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While BLE capabilities exist, there is no information about mobile app to cloud communication or its encryption methods.
+                        Not identified in analysis. The device analysis does not contain information about mobile app to cloud communications.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        No cryptographic key management system is identified in the analysis. The analysis specifically notes "Crypto Libraries: None implemented" [Source: Section 11 - Encryption & Key Management].
+                        The analysis shows only standard BLE security stack-managed keys and WPA2 network-level key management. No custom cryptographic key management is documented. [Source: Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer">
-                        No cryptographic libraries are implemented according to the analysis [Source: Section 11 - Encryption & Key Management].
+                    <div class="answer not-identified">
+                        The analysis identifies mbedTLS as a dependency, but its version is unknown. [Source: Section 10 - Component Inventory & Security Analysis]
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, there are significant security concerns: - Complete lack of encryption for stored data - No encryption for data in transit - Absence of cryptographic libraries - No user authentication mechanisms - Raw physiological data transmission without protection [Source: Section 9 - Final Assessment, Privacy Risk Level]
+                        Yes, several security concerns are evident: - Lack of encryption for data in transit over TCP - No user authentication for data transmission - Raw physiological data exposure - Incomplete security documentation [Source: Section 9 - Final Assessment, Section 11 - Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        No justification for the lack of encryption is provided in the analysis. This is listed as an "Area Requiring Further Investigation" [Source: Section 12]. Given that the device handles sensitive health data (ECG measurements), this represents a significant security oversight.
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis does not provide any justification for the lack of encryption in data transmission or storage. This represents a significant security gap, particularly for a device handling sensitive medical data like ECG readings.
                     </div>
                 </div>
                 
