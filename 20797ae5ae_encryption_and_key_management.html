@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Sidekickos</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/siersidekick/SidekickOS.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/siersidekick/SidekickOS.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-22 11:10:18</p>
+                <p><strong>Generated:</strong> 2025-07-24 00:39:25</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        Based on the analysis, there is no encryption implemented for data stored on the device. The firmware uses SPIFFS filesystem and PSRAM for local storage of images and audio data without encryption [Source: firmware/main/main.cpp]. This represents a potential security vulnerability.
+                        Based on the analysis, no encryption methods are identified for data stored on the device. The device uses SPIFFS filesystem and PSRAM for local storage of JPEG images and audio data, but there is no evidence of encryption implementation. [Source: firmware/main, Section 11: Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The mobile application component is mentioned but there are no specific details about how data is stored or encrypted within the mobile application.
+                        Not identified in analysis. The analysis does not provide information about mobile application data storage or encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While there is integration with Google Gemini API [Source: sidekickos-client/demos/gemini_demo.py], there are no details about cloud storage or its encryption methods.
+                        The only cloud integration mentioned is with Google Gemini API, but the encryption methods are unknown. The analysis states "Type: Dependent on Google Gemini API, Method: Unknown" [Source: Section 11: Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        For API communications with cloud services (Google Gemini API), HTTPS/TLS is presumed to be used based on standard API security practices [Source: sidekickos-client/demos/gemini_demo.py]. However, specific encryption details are not explicitly documented.
+                        The device primarily uses Bluetooth Low Energy (BLE) for data transmission with only standard BLE security protocols. No additional encryption methods are implemented for data in transit. [Source: Section 11: Encryption & Key Management, firmware/main/main.cpp]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the system includes mobile app functionality, there are no specific details about encryption methods used for mobile app to cloud communications.
+                        Not identified in analysis. The documentation does not provide information about mobile app to cloud communication or associated encryption methods.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The only identified key management is the standard BLE security key management system [Source: firmware/main/main.cpp]. No other cryptographic key generation, storage, or management systems are documented in the analysis.
+                        The analysis indicates no cryptographic key management system is implemented. API keys are stored in plaintext, which represents a security concern. [Source: Section 11: Encryption & Key Management, sidekickos-client/demos/gemini_demo.py]
                     </div>
                 </div>
                 
@@ -211,8 +211,8 @@
                     <div class="question">
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the system uses various software components including ESP32S3 SDK and BLE Stack [Source: firmware/main/main.cpp], specific cryptographic libraries and their versions are not documented.
+                    <div class="answer">
+                        No specific cryptographic libraries are identified in the analysis. The only security-related components mentioned are the standard BLE security stack, but versions are not specified. [Source: Section 10: Component Inventory & Security Analysis]
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are evident: 1. Lack of encryption for locally stored data [Source: firmware/main/main.cpp] 2. Reliance only on standard BLE security for data transmission 3. No documented user authentication mechanisms 4. Missing security documentation [Source: Section 9 - Privacy Risk Level]
+                        Yes, several security concerns are identified: - Lack of encryption for stored data - No additional encryption beyond standard BLE security for data transmission - API keys stored in plaintext - No user authentication mechanism - Raw sensor data accessible [Source: Section 9: Final Assessment, Section 11: Encryption & Key Management]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The lack of encryption for local storage and limited security measures are documented [Source: Section 11 - Encryption & Key Management], but no justification is provided for these omissions.
+                        Not identified in analysis. The documentation does not provide any justification for the lack of encryption implementation. This appears to be a significant security oversight given the sensitive nature of the data being collected (video and audio).
                     </div>
                 </div>
                 
