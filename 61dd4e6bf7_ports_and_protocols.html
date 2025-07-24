@@ -1,0 +1,247 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Ports & Protocols Analysis - Ultimatedoorbell</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    line-height: 1.6;
+                }
+
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+
+                .header h1 {
+                    margin: 0 0 10px 0;
+                    font-size: 2.2em;
+                    font-weight: 300;
+                }
+
+                .header p {
+                    margin: 0;
+                    opacity: 0.9;
+                    font-size: 1.1em;
+                }
+
+                .info-box {
+                    background: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    border-left: 5px solid #667eea;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .info-box p {
+                    margin: 8px 0;
+                    color: #555;
+                }
+
+                .info-box strong {
+                    color: #333;
+                }
+
+                .content-box {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;
+                }
+
+                .qa-section {
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .qa-section:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .question {
+                    color: #2c3e50;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                .answer {
+                    color: #555;
+                    font-size: 1em;
+                    line-height: 1.7;
+                    padding: 15px 20px;
+                    background: #fdfdfd;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+
+                .answer strong {
+                    color: #2c3e50;
+                }
+
+                .source-ref {
+                    color: #6c757d;
+                    font-style: italic;
+                    font-size: 0.9em;
+                }
+
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 25px;
+                    color: #6c757d;
+                    font-size: 0.9em;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .not-identified {
+                    color: #dc3545;
+                    font-style: italic;
+                }
+
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    body {
+                        padding: 10px;
+                    }
+
+                    .header h1 {
+                        font-size: 1.8em;
+                    }
+
+                    .content-box, .info-box {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Ports & Protocols Analysis</h1>
+                <p>IoT Security Analysis for Ultimatedoorbell</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Device:</strong> Ultimatedoorbell</p>
+                <p><strong>Repository:</strong> <a href="https://github.com/ShVerni/UltimateDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ShVerni/UltimateDoorbell.git</a></p>
+                <p><strong>Analysis Type:</strong> Question-based security assessment</p>
+                <p><strong>Generated:</strong> 2025-07-24 00:19:58</p>
+            </div>
+
+            <div class="content-box">
+                <div class="qa-content">
+                    
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
+                    </div>
+                    <div class="answer">
+                        Based on the analysis, the device supports: - I2S interface for audio output [Source: lib/SoundPlayer/src/SoundPlayer.h] - GPIO interface for button input [Source: src/main.cpp] - SD Card slot for storage [Source: lib/Storage/src/Storage.cpp] No explicit mention of USB or Ethernet interfaces was found in the analysis.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q2:</strong> What communication protocols are being used by the device?
+                    </div>
+                    <div class="answer">
+                        The device uses the following protocols: - HTTP for web interface and webhooks on Port 80 [Source: src/main.cpp] - WiFi for network connectivity using ESPAsyncWiFiManager [Source: src/main.cpp] - I2S protocol for audio streaming [Source: lib/SoundPlayer/src/SoundPlayer.h]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q3:</strong> What is the justification for each interface and protocol?
+                    </div>
+                    <div class="answer">
+                        Based on the device's functionality: - HTTP: Required for web-based configuration interface and webhook notifications - WiFi: Needed for network connectivity and remote access - I2S: Required for audio output functionality (doorbell sounds) - GPIO: Necessary for doorbell button input - SD Card: Provides storage for audio files and configuration
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q4:</strong> What access is provided across each of the interfaces?
+                    </div>
+                    <div class="answer">
+                        The analysis shows: - I2S: Output only for audio streaming [Source: lib/SoundPlayer/src/SoundPlayer.h] - GPIO Button: Input only, interrupt-driven [Source: src/main.cpp] - SD Card: Read/Write access [Source: lib/Storage/src/Storage.cpp] - HTTP: Web interface access and webhook communications [Source: src/main.cpp]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
+                    </div>
+                    <div class="answer">
+                        Limited information is available about security measures. The analysis shows: - SD Card: Has mounting protection [Source: lib/Storage/src/Storage.cpp] - WiFi: Uses ESPAsyncWiFiManager for configuration [Source: src/main.cpp] No specific security measures are documented for HTTP or other interfaces.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q6:</strong> How can users securely set up their device?
+                    </div>
+                    <div class="answer not-identified">
+                        The device uses ESPAsyncWiFiManager for WiFi setup [Source: src/main.cpp], but specific secure setup procedures are not identified in the analysis. No detailed security documentation was found.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. No evidence of MUD file implementation was found in the repository.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q8:</strong> How might the device's network functions affect user privacy?
+                    </div>
+                    <div class="answer">
+                        The device's network functions could impact privacy through: - Webhook notifications that may expose doorbell usage patterns [Source: lib/Webhooks/src/Webhooks.cpp] - Unsecured HTTP communications on port 80 [Source: src/main.cpp] - WiFi network access without specified encryption [Source: Data Transmission section] The analysis rates overall privacy risk as Medium.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documented ports and protocols (HTTP, WiFi, I2S) appear to be actively used for core device functionality, though the security of HTTP implementation on port 80 could pose risks without proper safeguards.
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Generated by IoT Privacy Label Generator</strong></p>
+                <p>This analysis is based on available documentation and code review.</p>
+                <p>Questions are answered using AI analysis of the device's source code and documentation.</p>
+            </div>
+        </body>
+        </html>
+        
