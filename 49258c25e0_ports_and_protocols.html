@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Pirate Audio</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/pimoroni/pirate-audio.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/pimoroni/pirate-audio.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:13:51</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:23:53</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports the following physical interfaces: - SPI: Used for display communication [Source: build-your-own/display.py] - GPIO: Used for button inputs [Source: examples/buttons.py] - I2C: Used for audio configuration [Source: clip-recorder/recorder.py] No explicit mention of USB or Ethernet interfaces, though being a Raspberry Pi-based device, these may be available through the base hardware but are not actively used in the documented functionality.
+                        Based on the analysis, the device supports the following physical interfaces: - SPI: Used for display communication - I2S: Used for audio data transfer - GPIO: Used for button inputs - Audio jack: For analog audio output [Source: Ports & Protocols section of analysis]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The analysis identifies the following protocols: - SPI (Serial Peripheral Interface): For display communication - I2C: For audio configuration - GPIO: For button input handling [Source: Section 12 - Ports & Protocols]
+                        The device uses the following communication protocols: - I2S (Inter-IC Sound): For audio data streaming - SPI (Serial Peripheral Interface): For display control - GPIO: For button state monitoring [Source: Ports & Protocols section, Data Transmission section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        The analysis shows clear functional justifications: - SPI: Required for controlling the ST7789 LCD display output - GPIO: Necessary for reading button input controls - I2C: Required for audio device configuration and management [Source: build-your-own/display.py, examples/buttons.py, clip-recorder/recorder.py]
+                        Each interface serves a specific functional purpose: - SPI: Required for controlling the ST7789 LCD display - I2S: Necessary for high-quality digital audio transfer between components - GPIO: Required for button input functionality - Audio jack: Essential for audio output functionality [Source: Component Inventory section, Physical Actuation section]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis specifies the following access patterns: - SPI: Write-only access for display control - GPIO: Read-only access for button inputs - I2C: Read/Write access for audio configuration [Source: Section 12 - Ports & Protocols]
+                        Based on the available analysis: - SPI: Display control and data output - I2S: Audio data streaming - GPIO: Button input reading - Audio jack: Analog audio output However, detailed access specifications and limitations are not fully documented in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis reveals minimal safeguards: - GPIO: Basic button debouncing implemented - SPI: No safeguards identified - I2C: No safeguards identified [Source: Section 12 - Ports & Protocols]
+                        The analysis mentions limited safeguards: - Hardware power-on reset - Automatic power-down features - Input debouncing on buttons No additional security measures are documented for the interfaces. [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device documentation lacks specific security setup instructions or best practices for secure configuration.
+                        Not identified in analysis. While there are setup procedures mentioned in the installation scripts [Source: mopidy/install.sh], specific security measures during setup are not documented.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability in the repository documentation.
+                        Not identified in analysis. No mention of MUD file availability in any of the documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        Based on the analysis, no network functions are implemented, minimizing network-related privacy risks. The device operates locally, storing audio data on the local filesystem without encryption. The main privacy concern relates to unprotected local storage of audio recordings. [Source: Section 9 - Final Assessment, Privacy Risk Level]
+                        Based on the analysis, the device primarily handles local audio data and display functions. The main privacy concerns identified are: - Unencrypted local audio storage - No documented data retention policies - Integration with services like Spotify and Mopidy could have privacy implications [Source: Data Sharing & Privacy section, Final Assessment section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documented interfaces (SPI, I2C, GPIO) all serve specific functional purposes. However, the analysis does not provide a comprehensive audit of all available ports/protocols that might be accessible through the underlying Raspberry Pi hardware.
+                        Not identified in analysis. The documented interfaces all appear to serve specific functional purposes, but there's no explicit analysis of unused or unnecessary ports/protocols.
                     </div>
                 </div>
                 
