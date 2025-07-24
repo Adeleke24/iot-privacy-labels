@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:56:22</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:38:48</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        The device analysis identifies three physical interfaces: - USB: Used for programming and charging - I2C: Used for display communication - SPI: Used for sensor communication [Source: Ports & Protocols section]
+                        Based on the analysis, the device supports: - USB interface for programming and charging - I2C interface for internal sensor communications [Source: Hardware files, Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following communication protocols: - HTTP: For weather API calls (with TLS encryption) - NTP: For time synchronization - WiFi: For network connectivity (WPA2 capable) - Bluetooth: For device pairing (using standard BLE security) [Source: Ports & Protocols section]
+                        The device uses multiple communication protocols: - WiFi for internet connectivity - Bluetooth (BLE) for optional connectivity - HTTP for weather API communications - NTP for time synchronization [Source: settings.h, Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the analysis: - USB: Required for device programming and power charging - I2C: Necessary for E-Paper display communication - SPI: Required for sensor data communication - HTTP: Needed for weather data retrieval - NTP: Essential for accurate time synchronization - WiFi/Bluetooth: Required for connectivity and data transmission [Source: Executive Summary, Ports & Protocols section]
+                        Each interface/protocol serves a specific purpose: - USB: Required for device programming and charging - I2C: Necessary for internal sensor communication - WiFi: Enables weather updates and time synchronization - Bluetooth: Provides optional connectivity features - HTTP: Required for OpenWeatherMap API access - NTP: Essential for accurate time synchronization [Source: settings.h, Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis provides limited information about specific access levels. What we know: - USB: Provides programming and charging access - WiFi: Enables weather API and NTP server access - Bluetooth: Enables device pairing capabilities Detailed access specifications for I2C and SPI interfaces are not identified in the analysis.
+                    <div class="answer">
+                        The analysis shows: - USB: Full access for programming/charging - I2C: Internal access only - WiFi: Limited to configured networks - Bluetooth: Access requires pairing - HTTP: Public internet access - NTP: Public internet access [Source: Hardware files, settings.h]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The analysis reveals limited information about interface safeguards: - WiFi: WPA2 capability mentioned - Bluetooth: Standard BLE security - HTTPS: TLS encryption for API calls No specific safeguards are mentioned for USB, I2C, or SPI interfaces. [Source: Ports & Protocols section]
+                        The identified safeguards include: - USB: Hardware-level protection - I2C: No external access - WiFi: WPA2 security - Bluetooth: Standard BLE security and pairing requirement - HTTP: No additional security identified - NTP: Standard NTP security [Source: settings.h, Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Not fully identified in analysis. While the analysis mentions WiFi SSID configuration and device setup info is collected [Source: Other Collected Data section], specific secure setup procedures are not detailed.
+                        Not fully identified in analysis. While the analysis shows WiFi SSID configuration and API credential setup are required [Source: settings.h], specific secure setup procedures are not detailed.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability in any section of the device analysis.
+                        Not identified in analysis. No mention of MUD file availability in any of the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The analysis indicates several privacy implications: - Weather API calls may expose location data - Plaintext API keys pose security risks - Unencrypted data transmission is a concern - Collection of WiFi SSID information [Source: Final Assessment section, Data Sharing & Privacy section]
+                        The analysis indicates several privacy concerns: - Plain text API keys exposure - Location data exposure through weather API requests - Unencrypted data transmission - Collection of WiFi SSID information - Device usage data collection [Source: settings.h, Section 9 Final Assessment]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis lists active ports and protocols, it doesn't specify whether any are unnecessary or unused. Further investigation would be needed to make this determination.
+                        Not identified in analysis. While all documented ports and protocols have clear purposes, there is no explicit information about unused or unnecessary ports/protocols that might pose security risks.
                     </div>
                 </div>
                 
