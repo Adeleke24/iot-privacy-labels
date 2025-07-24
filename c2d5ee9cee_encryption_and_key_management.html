@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Doorbell Camera</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/mtekman/doorbell-camera.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/mtekman/doorbell-camera.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 01:56:45</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:16:35</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        Based on the analysis, no encryption is used for data stored locally on the device. The device stores JPEG images and video on an SD card in unencrypted format. [Source: Section 11 - "Local Storage | No Encryption | N/A | [Source: main.cpp]"]
+                        Based on the analysis, no encryption is implemented for data stored on the device. The local storage (SD Card) operates without encryption, and configuration data is stored in plaintext [Source: camera_server.cpp, settings.h]. This represents a security vulnerability as sensitive data like video recordings and device settings are stored unprotected.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention or show evidence of a mobile application component.
+                        Not identified in analysis. The provided documentation does not mention or describe any mobile applications associated with the device.
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
-                    <div class="answer">
-                        No cloud storage is implemented according to the analysis. The device operates locally without cloud connectivity. [Source: Section 2 - "Cloud Storage: No, Cloud Retention Time: N/A"]
+                    <div class="answer not-identified">
+                        Not identified in analysis. According to the device analysis, there is no cloud storage implementation mentioned [Source: Section 2. DATA COLLECTION & STORAGE].
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The device uses unencrypted HTTP for data transmission via WiFi. No encryption is implemented for data in transit. [Source: Section 3 - "Data Encrypted in Transit: No" and Section 11 - "Data in Transit | No Encryption | N/A"]
+                        Based on the analysis, data transmission occurs via unencrypted HTTP protocol for the web interface and video streaming [Source: camera_server.cpp, Section 3. DATA TRANSMISSION]. No encryption is implemented for data in transit, only basic HTTP authentication is used.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        No cryptographic key management system is identified in the analysis. The system uses basic HTTP authentication without sophisticated key management. [Source: Section 11 - No crypto libraries identified in codebase]
+                        The analysis shows no implementation of cryptographic key management. WiFi credentials are stored in plaintext configuration, and no dedicated encryption libraries or key management systems are identified [Source: Section 11. ENCRYPTION & KEY MANAGEMENT].
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer">
-                        No cryptographic libraries are identified in the codebase. [Source: Section 11 - "No crypto libraries identified in codebase"]
+                        No dedicated encryption libraries are identified in the analysis [Source: Section 11. ENCRYPTION & KEY MANAGEMENT]. The only security-related implementation mentioned is basic HTTP authentication and WPA2 capability for WiFi connectivity.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, there are significant security concerns: 1. Lack of encryption for stored data on SD card 2. Unencrypted HTTP transmission of video data 3. Basic authentication only 4. No secure key management [Source: Sections 9, 11, and 12]
+                        Yes, several significant security concerns are evident: - Lack of encryption for local storage on SD card - Plaintext storage of configuration data including WiFi credentials - Unencrypted HTTP communication for web interface and video streaming - Basic HTTP authentication only - No secure key management system [Source: Section 11. ENCRYPTION & KEY MANAGEMENT, Section 9. FINAL ASSESSMENT]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        No explicit justification is provided in the analysis for the lack of encryption. This appears to be a security oversight rather than a justified design decision, as indicated by it being listed as an "Area Requiring Further Investigation" in Section 12.
+                        No explicit justification for the lack of encryption is provided in the analysis. This appears to be a significant security oversight rather than a justified design decision, particularly concerning for a device that handles sensitive data like video recordings and motion detection events.
                     </div>
                 </div>
                 
