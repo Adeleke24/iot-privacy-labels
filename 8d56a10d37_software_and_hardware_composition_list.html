@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:05:31</p>
+                <p><strong>Generated:</strong> 2025-07-24 03:55:56</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer not-identified">
-                        Based on the analysis, the following software components are identified: - GxEPD Display Library (version unknown) [Source: Watchy_DOS.cpp] - OpenWeatherMap API Integration (current version) [Source: settings.h] - RTC Library (version unknown) [Source: Watchy_DOS.cpp] - WiFi Library (ESP32 Standard) [Source: settings.h] Note that most version numbers are not specified in the analysis.
+                        Based on the analysis, the following software components are identified: - ESP32 Core (version unknown) [Source: platform.txt] - GxEPD Library (version unknown) [Source: Watchy_7_SEG.cpp] - OpenWeatherMap API Client (custom implementation) [Source: settings.h] - NTP Client (built-in) [Source: settings.h] However, specific version numbers are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
-                    <div class="answer">
-                        The analysis identifies the following hardware components: - Motion sensor [Source: examples/WatchFaces/7_SEG] - Temperature sensor [Source: examples/WatchFaces/Basic/settings.h] - Bluetooth module [Source: examples/WatchFaces/7_SEG] - Display unit [Source: Watchy_DOS.cpp] - Internal storage hardware [Source: Section 2] - USB interface [Source: Section 12]
+                    <div class="answer not-identified">
+                        The analysis identifies the following hardware components: - E-Paper display [Source: Watchy_7_SEG.cpp] - Accelerometer sensor [Source: Watchy_7_SEG.cpp] - Battery sensor [Source: Watchy_7_SEG.cpp] - WiFi module [Source: settings.h] - Bluetooth module [Source: settings.h] - Flash memory for storage [Source: Component Inventory] - I2C and SPI interfaces [Source: Ports & Protocols section] Specific hardware model numbers or manufacturers are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
-                    <div class="answer">
-                        The analysis identifies several security concerns but no specific CVEs or vulnerabilities: - Exposed API keys [Source: Section 9] - Hardcoded location data [Source: Section 9] - Unencrypted data transmission [Source: Section 9] - Weak key management practices [Source: Section 11]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis mentions "Areas Requiring Further Investigation" including security concerns like encryption implementation and firmware updates, it does not specifically identify any known vulnerabilities in the components.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While third-party components are mentioned (e.g., GxEPD Display Library, OpenWeatherMap API), their specific licenses are not documented in the provided analysis.
+                    <div class="answer">
+                        The analysis only identifies one specific license: - GxEPD Library: GPL license [Source: Component Inventory] Licenses for other components are not explicitly stated in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The manufacturing and sourcing information for hardware components is not included in the provided device analysis.
+                        Not identified in analysis. The manufacturing and sourcing information for hardware components is not provided in the device analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis provides extensive technical details, it does not include information about supply chain security measures or component sourcing security.
+                        Not identified in analysis. The device analysis does not include information about supply chain security measures or component sourcing security.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis lists various components and their current status, it does not specifically identify any components as deprecated or end-of-life. A more detailed version analysis would be needed to make this determination.
+                        Not identified in analysis. While the analysis includes component information, it does not specify whether any components are deprecated or end-of-life.
                     </div>
                 </div>
                 
