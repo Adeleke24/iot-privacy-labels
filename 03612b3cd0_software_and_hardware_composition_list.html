@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:08:48</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:13:55</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the following software components are identified: - Flutter Framework (version not specified) [Source: pubspec.yaml] - Firebase Auth (version not specified) [Source: pubspec.yaml] - Health Monitoring Sensors v1.0 (proprietary) [Source: lib/services/sensor_service.dart] Additional components may be present but are not explicitly identified in the analysis.
+                        Based on the analysis, the following software components are identified: - Arduino IDE (version not specified) [Source: README.md] - Flutter Framework (version not specified) [Source: README.md] - Firebase RTDB (version not specified) [Source: README.md] However, specific version information is not provided in the analysis, which represents a gap in the documentation.
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis identifies the following hardware components: - Temperature sensor [Source: SHMS_Mobile_App] - Heart rate sensor [Source: SHMS_Mobile_App] - Blood pressure sensor [Source: SHMS_Mobile_App] - GPS capability (not implemented) [Source: SHMS_Mobile_App/ios/Runner] - Internal storage hardware (presence mentioned but details unknown) - Bluetooth LE interface [Source: lib/services/bluetooth_service.dart]
+                    <div class="answer">
+                        The device contains the following hardware components [Source: README.md]: - ESP8266 WiFi Module - MAX30102 Heart Rate/SpO2 Sensor - DS18B20 Temperature Sensor - MPU6050 Motion Sensor - Buzzer (for alerts) Additional sensors identified include heart rate, temperature, accelerometer, motion, and SpO2 capabilities [Source: FYP_MAIN_CODE.ino]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The security assessment sections don't specifically mention any known vulnerabilities in the components.
+                        Not identified in analysis. The documentation does not provide any vulnerability assessment or CVE information for the components used.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
-                    <div class="answer">
-                        The analysis identifies only two license types: - Apache 2.0 for Flutter Framework [Source: pubspec.yaml] - Apache 2.0 for Firebase Auth [Source: pubspec.yaml] - Proprietary license for Health Monitoring Sensors [Source: lib/services/sensor_service.dart]
+                    <div class="answer not-identified">
+                        The analysis only indicates that Arduino IDE and Flutter Framework are Open Source, while Firebase RTDB is Proprietary [Source: README.md]. Specific license types (e.g., MIT, Apache, etc.) are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided documentation does not include information about manufacturing locations or component sourcing.
+                        The analysis only identifies component manufacturers: - ESP8266 - Espressif - MAX30102 - Maxim Integrated - DS18B20 - Maxim Integrated - MPU6050 - InvenSense [Source: README.md] Specific manufacturing locations and sourcing details are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device has security features like encryption (AES-256, TLS 1.3) and authentication mechanisms, specific supply chain security measures are not documented in the analysis.
+                        Not identified in analysis. The documentation does not provide information about supply chain security measures, vendor verification, or component authenticity validation procedures.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not specify whether any components are deprecated or reaching end-of-life status. Most components are listed as "Latest" version, but specific version numbers are not provided to determine their lifecycle status.
+                        Not identified in analysis. The documentation does not specify component lifecycle status or indicate whether any components are deprecated or approaching end-of-life.
                     </div>
                 </div>
                 
