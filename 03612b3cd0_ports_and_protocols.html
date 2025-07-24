@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 02:08:50</p>
+                <p><strong>Generated:</strong> 2025-07-24 04:14:21</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports: - USB (for device updates) - Bluetooth LE (for health sensor communication) - Wi-Fi (for cloud synchronization) [Source: Section 12 - Ports & Protocols]
+                        Based on the analysis, the device supports three physical interfaces: - USB (used for programming) - I2C (used for sensor communications) - WiFi (used for data transmission) [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - Bluetooth LE (for sensor communication) - Wi-Fi (utilizing TLS 1.3 for encrypted cloud sync) - TLS 1.3 (for secure data transmission) [Source: Sections 11 & 12]
+                        The device uses the following communication protocols: - WiFi for cloud connectivity and data transmission to Firebase - I2C for internal sensor communication - Firebase RTDB protocol for database interactions [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        The analysis shows the following justifications: - Bluetooth LE: Required for health sensor communication - Wi-Fi: Needed for cloud synchronization - USB: Used for device updates and firmware management [Source: Section 12 - Ports & Protocols]
+                        Based on the device's functionality: - USB: Required for device programming and firmware updates - I2C: Necessary for communication with onboard sensors (MAX30102, MPU6050, etc.) - WiFi: Essential for transmitting health data to Firebase cloud database for remote monitoring [Source: Component Inventory, Data Transmission sections]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis indicates: - Bluetooth LE: Limited access with pairing authentication - Wi-Fi: Encrypted access for cloud sync - USB: Limited access for device updates [Source: Section 12 - Ports & Protocols]
+                        Not fully identified in analysis. The only clear access patterns shown are: - WiFi interface used for data transmission to Firebase every 20 seconds - I2C used for sensor data collection - USB presumably used for programming access However, specific access controls and permissions are not documented.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The following safeguards are identified: - Bluetooth LE: Pairing authentication - Wi-Fi: TLS security, encrypted transmission - USB: Signed firmware verification [Source: Sections 11 & 12]
+                        No documented port security measures or protocol security measures are identified in the analysis. This represents a potential security concern that requires further investigation. [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer">
-                        Not fully identified in analysis. While the analysis mentions device setup info and configuration settings [Source: Section 8], specific secure setup procedures are not detailed.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis mentions device setup info including WiFi credentials [Source: Other Collected Data section], specific secure setup procedures are not documented.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. There is no mention of a MUD file in any of the provided documentation.
+                        Not identified in analysis. No mention of MUD file availability in any of the documented materials.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions pose several privacy considerations: - Handles sensitive health data transmission - Multiple data linkage points (internal and external) - Collects personal information including contact info and account details - Rated as "High" privacy risk level [Source: Sections 8 & 9]
+                        The device's network functions pose several privacy concerns: - Continuous transmission of sensitive health data every 20 seconds - No documented encryption for data in transit - Data shared with cloud service providers (Firebase) - No clear privacy policy or data retention policies [Source: Data Transmission, Privacy Risk Level sections]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the active interfaces and protocols are documented, there is no explicit mention of unused or unnecessary ports/protocols that might pose security risks.
+                        Not identified in analysis. While the active ports and protocols are documented, there is no information about unused or unnecessary ports/protocols. A security audit would be needed to make this determination.
                     </div>
                 </div>
                 
