@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Ultimatedoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/ShVerni/UltimateDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ShVerni/UltimateDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:32:50</p>
+                <p><strong>Generated:</strong> 2025-07-24 22:30:23</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer">
-                        The analysis indicates minimal encryption for stored data. The ESP32-S3's flash encryption feature is listed as "optional" but not explicitly implemented. The file system is specifically noted as having "No encryption" [Source: Encryption & Key Management section]. Local storage uses either LittleFS or SD card storage without encryption [Source: Storage.cpp].
+                        The analysis indicates that local storage is generally unencrypted, with the exception of WiFi credentials which are stored in ESP32's Native Storage (NVS) with built-in encryption. Specific encryption algorithms are not detailed in the analysis. [Source: WiFiConfig.cpp, Section 11: ENCRYPTION & KEY MANAGEMENT]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile applications or their associated encryption methods.
+                        Not identified in analysis. The device analysis does not mention or describe any mobile applications associated with the Ultimate Doorbell system.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device does not appear to use cloud storage - data transmission is limited to webhook notifications and web interface interactions [Source: Data Transmission section].
+                        Not identified in analysis. While the system supports webhook communications, there is no mention of cloud storage or associated encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis mentions HTTPS for data encryption in transit [Source: Data Transmission section], but there's a contradiction as the web interface is specifically noted to use "HTTP (no HTTPS implementation)" [Source: Encryption & Key Management section]. This inconsistency suggests potential security concerns.
+                        The analysis indicates that HTTPS is supported for webhook communications, which implies TLS encryption for data in transit. However, specific TLS versions or cipher suites are not detailed. [Source: Webhooks.cpp, Section 11: ENCRYPTION & KEY MANAGEMENT]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis shows minimal key management implementation. WiFi credentials are stored in flash memory, but no custom key management system is implemented [Source: Encryption & Key Management section]. The analysis identifies this as an area requiring investigation.
+                        The analysis provides limited information on key management. WiFi credentials are stored in ESP32's NVS system, but specific details about key generation, storage, and management are not provided. This is listed as an "Area Requiring Further Investigation" in the analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer">
-                        The analysis does not identify any specific cryptographic libraries. The main libraries mentioned are: - ESPAsyncWebServer v3.1.0 - AsyncTCP-esphome v2.1.3 - ArduinoJson v6.21.4 - ESPAsyncWiFiManager v0.31 [Source: Component Inventory & Security Analysis section]
+                        The analysis does not explicitly identify cryptographic libraries. While several software components are listed (ESP32 Arduino Core, ESPAsyncWebServer, etc.), none are specifically noted as cryptographic libraries.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are evident: 1. Lack of file system encryption 2. No HTTPS implementation for web interface 3. Basic WiFi security (WPA2/WPA3) but no additional encryption layers 4. No custom key management system 5. Potential webhook security vulnerabilities [Source: Encryption & Key Management section, Areas Requiring Investigation]
+                        The analysis identifies several potential security concerns: 1. Local storage is generally unencrypted 2. Webhook security implementation details are unclear 3. WiFi credential storage security needs further investigation 4. Web interface authentication mechanism requires investigation [Source: Areas Requiring Further Investigation section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        The analysis does not provide explicit justification for the lack of encryption. This appears to be identified as a security gap rather than a deliberate choice, as "HTTPS implementation" and "WiFi security hardening" are listed under "Areas Requiring Investigation" [Source: Areas Requiring Investigation section].
+                        The analysis does not provide explicit justification for the lack of encryption on local storage. The device does implement encryption for sensitive data (WiFi credentials) and communications (HTTPS for webhooks), suggesting that encryption is selectively applied based on data sensitivity rather than completely absent.
                     </div>
                 </div>
                 
