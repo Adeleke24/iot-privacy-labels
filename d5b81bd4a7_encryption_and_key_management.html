@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:18:32</p>
+                <p><strong>Generated:</strong> 2025-07-24 21:55:33</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis confirms local storage of fingerprint templates and images, there is no explicit mention of encryption methods for stored data on the device.
+                    <div class="answer">
+                        Not explicitly identified in analysis. While the device stores fingerprint templates and other data locally in flash storage [Source: datasheet_summary_combined.md], the encryption method for stored data is not specified in the documentation.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The analysis does not mention any mobile applications associated with the FingerprintDoorbell system.
+                        Not identified in analysis. The documentation does not mention a mobile application or its associated encryption methods.
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions MQTT broker connectivity, it does not specify cloud storage or associated encryption methods.
+                    <div class="answer">
+                        Based on the analysis, the device does not utilize cloud storage. Data is stored locally, and only metadata/event results are transmitted to an MQTT broker [Source: main.cpp].
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis indicates that data is encrypted in transit ("Data Encrypted in Transit: Yes") but does not specify the encryption methods. Data is transmitted via WiFi and MQTT protocols to an MQTT broker. [Source: Data Transmission section]
+                        For device-to-broker communication, the system uses: - TLS-capable MQTT communication with password-based authentication [Source: SettingsManager.cpp] - WPA2 encryption for WiFi communication [Source: SettingsManager.cpp]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application is mentioned in the device analysis.
+                        Not identified in analysis. No mobile application is mentioned in the documentation.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the system uses encrypted transmission, there is no information about key generation, storage, or management processes.
+                    <div class="answer">
+                        Limited information available. The analysis only mentions: - Password-based authentication for MQTT - WPA2 credentials for WiFi - Hardware pairing code for sensor pairing [Source: SettingsManager.cpp, FingerprintManager.cpp] Specific key generation and management processes are not detailed.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not specify any cryptographic libraries or their versions.
+                        Not identified in analysis. While the device uses MQTT client library and implements various security features, specific cryptographic libraries and their versions are not mentioned in the documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Based on the limited information provided, there are potential security concerns: 1. Lack of documented encryption for stored fingerprint data 2. No clear description of key management 3. No mention of encryption standards or protocols [Source: Overall analysis context]
+                        Several potential concerns are identified: - Web interface runs without encryption (HTTP only) [Source: main.cpp] - MQTT TLS is listed as "optional" rather than mandatory [Source: main.cpp] - Documentation is partial regarding security measures [Source: Final Assessment] - Fingerprint template storage security requires further investigation [Source: Areas Requiring Further Investigation]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While some encryption is used (for data in transit), there's no explanation provided for areas where encryption might be missing, such as local storage encryption.
+                    <div class="answer">
+                        No explicit justification is provided for unencrypted components (like the web interface). The analysis indicates this as an area requiring further investigation rather than a deliberate design choice [Source: Areas Requiring Further Investigation].
                     </div>
                 </div>
                 
