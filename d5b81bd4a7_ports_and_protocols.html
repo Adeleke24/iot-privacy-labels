@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Fingerprintdoorbell</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/frickelzeugs/FingerprintDoorbell.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/frickelzeugs/FingerprintDoorbell.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:18:45</p>
+                <p><strong>Generated:</strong> 2025-07-24 21:55:50</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the provided analysis, only WiFi is explicitly confirmed as a network interface. Other physical interfaces are not clearly identified in the analysis documentation. While a fingerprint sensor and touch ring are present as input interfaces, the specific connection methods (USB, I2C, etc.) are not detailed in the provided analysis.
+                        Based on the analysis, the device supports: - UART interface (for fingerprint sensor communication) [Source: FingerprintManager.h] - WiFi connectivity (for network communication) [Source: main.cpp] No direct USB or Ethernet interfaces are mentioned in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - WiFi for network connectivity - MQTT for message queuing and communication with the broker [Source: main.cpp, Data Transmission section]
+                        The device uses the following protocols: - UART (for fingerprint sensor communication) - WiFi (WPA2) - HTTP (for web interface) - MQTT (for event reporting and broker communication) [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the analysis: - WiFi: Required for network connectivity and remote access capabilities - MQTT: Enables integration with smart home systems and event reporting The justification appears to align with the device's core functionality as a smart doorbell system with home automation integration [Source: README.md]
+                        The analysis shows the following justifications: - UART: Required for fingerprint sensor communication and data transfer - WiFi: Enables network connectivity for remote access and MQTT communication - HTTP: Provides web interface for device management - MQTT: Enables event reporting and broker communication for device status updates [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis shows: - MQTT interface: Transmits metadata and event results including: - Fingerprint match events (ID, name, confidence) - Doorbell ring events [Source: Data Transmission section] Other interface access details are not identified in the analysis.
+                    <div class="answer">
+                        The analysis indicates: - UART: Limited to sensor communication only - WiFi: Limited to configured network access - HTTP: Local network access only - MQTT: Broker communication with optional TLS [Source: Ports & Protocols section]
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
-                    <div class="answer not-identified">
-                        The only identified safeguard is encryption for data in transit [Source: Data Transmission section]. Other specific security measures for interfaces are not identified in the analysis.
+                    <div class="answer">
+                        The analysis shows the following security measures: - UART: Hardware-level encryption - WiFi: WPA2 encryption - HTTP: Limited to local network only (though no encryption mentioned) - MQTT: Optional TLS and password-based authentication [Source: Ports & Protocols section, Encryption & Key Management section]
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the device supports OTA updates [Source: Executive Summary], specific secure setup procedures are not detailed in the provided documentation.
+                    <div class="answer">
+                        The analysis indicates the presence of device setup information including WiFi SSID and onboarding details [Source: Other Collected Data section], but specific secure setup procedures are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not mention any MUD file implementation.
+                        Not identified in analysis.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis indicates several privacy implications: - Device shares data with cloud service providers (MQTT broker) - Transmits user access patterns and presence detection - No privacy policy is mentioned - User consent requirements are unknown [Source: Data Sharing & Privacy section]
+                    <div class="answer">
+                        The device's network functions have several privacy implications: - Collects and transmits access patterns and user presence data - Stores fingerprint templates locally - Transmits event metadata via MQTT - Uses WiFi networking that could potentially be tracked [Source: Data Collection & Storage, Data Transmission, Data Inference & Analytics sections]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While WiFi and MQTT are confirmed as active protocols, the analysis does not provide information about unused or unnecessary ports/protocols.
+                    <div class="answer">
+                        While the analysis documents the used ports and protocols, it doesn't explicitly identify unused or unnecessary ones. The HTTP web interface without encryption could pose a security risk since it's only limited by local network access [Source: Ports & Protocols section].
                     </div>
                 </div>
                 
