@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:14:21</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:35:22</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
-                    <div class="answer">
-                        Based on the analysis, the device supports three physical interfaces: - USB (used for programming) - I2C (used for sensor communications) - WiFi (used for data transmission) [Source: Ports & Protocols section]
+                    <div class="answer not-identified">
+                        Based on the provided analysis, only WiFi connectivity is explicitly mentioned. However, since the device uses an ESP8266 microcontroller, it likely has a USB interface for programming/firmware updates, but this is not explicitly confirmed in the documentation. Other physical interfaces are not identified in the analysis. [Source: README.md]
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
-                    <div class="answer">
-                        The device uses the following communication protocols: - WiFi for cloud connectivity and data transmission to Firebase - I2C for internal sensor communication - Firebase RTDB protocol for database interactions [Source: Ports & Protocols section]
+                    <div class="answer not-identified">
+                        The only clearly identified communication protocol is WiFi, which is used for transmitting data to Google Firebase cloud. The specific WiFi protocols (802.11 standards) and any secondary protocols are not identified in the analysis. [Source: README.md, Data Transmission section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's functionality: - USB: Required for device programming and firmware updates - I2C: Necessary for communication with onboard sensors (MAX30102, MPU6050, etc.) - WiFi: Essential for transmitting health data to Firebase cloud database for remote monitoring [Source: Component Inventory, Data Transmission sections]
+                        WiFi connectivity is justified for real-time health data transmission to the cloud (Google Firebase) for remote monitoring and storage. However, the analysis doesn't provide explicit justifications for other interfaces or protocols. [Source: README.md]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer">
-                        Not fully identified in analysis. The only clear access patterns shown are: - WiFi interface used for data transmission to Firebase every 20 seconds - I2C used for sensor data collection - USB presumably used for programming access However, specific access controls and permissions are not documented.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While we know data is transmitted via WiFi to Firebase, specific details about access controls, permissions, or interface capabilities are not provided in the documentation.
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
-                    <div class="answer">
-                        No documented port security measures or protocol security measures are identified in the analysis. This represents a potential security concern that requires further investigation. [Source: Ports & Protocols section]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation does not specify any security measures or safeguards for the WiFi interface or any other potential interfaces.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions device setup info including WiFi credentials [Source: Other Collected Data section], specific secure setup procedures are not documented.
+                        Not identified in analysis. The documentation does not provide information about secure device setup procedures or initial configuration processes.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability in any of the documented materials.
+                        Not identified in analysis. There is no mention of a MUD file in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions pose several privacy concerns: - Continuous transmission of sensitive health data every 20 seconds - No documented encryption for data in transit - Data shared with cloud service providers (Firebase) - No clear privacy policy or data retention policies [Source: Data Transmission, Privacy Risk Level sections]
+                        The device collects and transmits sensitive health data (heart rate, SpO2, temperature, fall detection, sleep monitoring) in real-time to Google Firebase cloud. This continuous transmission of identifiable health data could pose privacy risks, especially if proper security measures aren't implemented. However, specific privacy protections are not detailed in the analysis. [Source: README.md, Data Collection & Storage section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the active ports and protocols are documented, there is no information about unused or unnecessary ports/protocols. A security audit would be needed to make this determination.
+                        Not identified in analysis. The documentation does not provide a complete port/protocol inventory or identify any unused or unnecessary communication channels.
                     </div>
                 </div>
                 
