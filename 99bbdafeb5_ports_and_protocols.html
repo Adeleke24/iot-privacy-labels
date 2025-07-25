@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Heartypatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/patchinc/heartypatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/patchinc/heartypatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:51:44</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:13:12</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        The device supports the following physical interfaces: - USB: Used for device programming and power [Source: kalam32.h] - SPI: Used for internal sensor communication [Source: max30003.c] No Ethernet interface is identified in the analysis.
+                        Based on the analysis, the device supports: - SPI interface (for ECG sensor communication with MAX30003) - WiFi interface - Bluetooth Low Energy (BLE) interface [Source: max30003.c, heartypatch_tcp_server.c, heartypatch_ble.c]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - TCP on port 4567 for data streaming - Bluetooth Low Energy (BLE) for heart rate service - WiFi for network connectivity - SPI for internal sensor communication [Source: heartypatch_tcp_server.c, heartypatch_ble.c, max30003.c]
+                        The device uses the following protocols: - SPI protocol for sensor communication - TCP/IP (specifically TCP server on port 4567) for WiFi data transmission - BLE protocol with Heart Rate Service profile [Source: heartypatch_tcp_server.c, heartypatch_ble.c]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the analysis: - TCP: Enables real-time ECG data streaming to clients - BLE: Provides heart rate service data to mobile devices - WiFi: Enables network connectivity for TCP streaming - SPI: Required for communication with MAX30003 ECG sensor - USB: Necessary for device programming and power supply [Source: Section 12 - Ports & Protocols]
+                        Each interface serves a specific purpose: - SPI: Required for communicating with the MAX30003 ECG sensor to collect vital sign data - WiFi/TCP: Enables real-time ECG data streaming to TCP clients - BLE: Provides heart rate monitoring service to mobile devices with lower power consumption [Source: max30003.c, heartypatch_tcp_server.c, heartypatch_ble.c]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows: - USB: Limited access for programming and power - SPI: Internal-only access for sensor communication - TCP: Port 4567 open for data streaming, no authentication - BLE: Standard ports with stack security for heart rate service - WiFi: Standard ports with WPA2 security [Source: Section 12 - Ports & Protocols]
+                        The analysis shows: - SPI: Data collection from ECG sensor - WiFi: TCP server on port 4567 for streaming ECG data - BLE: Heart rate service data transmission However, specific access controls and limitations are not detailed in the analysis. [Source: heartypatch_tcp_server.c, heartypatch_ble.c]
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
-                    <div class="answer">
-                        The identified safeguards are: - USB: Hardware protection measures (unspecified) - SPI: Hardware restricted access - BLE: Standard stack security features - WiFi: WPA2 security - TCP: No specific safeguards identified Note that the analysis indicates a lack of authentication for TCP connections, which is a security concern. [Source: Section 12 - Ports & Protocols]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While mbedtls is referenced, there's no evidence of implemented security measures for any of the interfaces.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer">
-                        Not fully identified in analysis. While the device supports WiFi with WPA2 security and requires WiFi SSID setup [Source: Section 8], specific secure setup procedures are not documented in the provided analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While WiFi SSID setup is mentioned, specific secure setup procedures are not documented.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file implementation is found in any of the provided documentation.
+                        Not identified in analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The analysis reveals several privacy concerns: - Unencrypted data transmission - Lack of user authentication - Raw physiological data exposure through TCP streaming - No documented privacy policies or data handling procedures [Source: Section 9 - Privacy Risk Level]
+                        The device's network functions pose several privacy concerns: - Real-time ECG data transmission over TCP without evident encryption - BLE heart rate data broadcasting - No documented privacy policies or data protection measures - No evident authentication mechanisms for data access [Source: Analysis Section 4: Data Sharing & Privacy]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
-                    <div class="answer">
-                        Not explicitly identified in analysis. While the analysis documents the active ports and protocols (TCP 4567, BLE, WiFi, SPI, USB), it doesn't specify whether any unnecessary ports or protocols are present. However, the lack of authentication on TCP port 4567 poses a security risk [Source: Section 12].
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device uses TCP port 4567, BLE, and SPI, there's no information about unused or unnecessary ports. All identified protocols appear to serve specific functional purposes.
                     </div>
                 </div>
                 
