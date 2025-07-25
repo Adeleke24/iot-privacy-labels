@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:13:55</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:35:01</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the following software components are identified: - Arduino IDE (version not specified) [Source: README.md] - Flutter Framework (version not specified) [Source: README.md] - Firebase RTDB (version not specified) [Source: README.md] However, specific version information is not provided in the analysis, which represents a gap in the documentation.
+                        Based on the provided analysis, specific software libraries and their versions are not explicitly identified in the analysis. While we know the device uses software to interface with various sensors (MAX30102, DS18B20, MPU6050) and communicates with Google Firebase cloud, the exact software components and versions are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
                     <div class="answer">
-                        The device contains the following hardware components [Source: README.md]: - ESP8266 WiFi Module - MAX30102 Heart Rate/SpO2 Sensor - DS18B20 Temperature Sensor - MPU6050 Motion Sensor - Buzzer (for alerts) Additional sensors identified include heart rate, temperature, accelerometer, motion, and SpO2 capabilities [Source: FYP_MAIN_CODE.ino]
+                        The analysis identifies several hardware components: - MAX30102 Heart rate and SpO2 sensor - DS18B20 Digital temperature sensor - MPU6050 Gyroscope and Accelerometer - ESP8266 with 4MB Flash (for storage and WiFi connectivity) - Humidity sensor (specific model not mentioned) [Source: README.md, datasheet_summary_combined.md]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide any vulnerability assessment or CVE information for the components used.
+                        Not identified in analysis. The documentation does not provide information about known vulnerabilities in either software or hardware components.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
                     <div class="answer not-identified">
-                        The analysis only indicates that Arduino IDE and Flutter Framework are Open Source, while Firebase RTDB is Proprietary [Source: README.md]. Specific license types (e.g., MIT, Apache, etc.) are not identified in the analysis.
+                        Not identified in analysis. The documentation does not specify any licensing information for software components.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        The analysis only identifies component manufacturers: - ESP8266 - Espressif - MAX30102 - Maxim Integrated - DS18B20 - Maxim Integrated - MPU6050 - InvenSense [Source: README.md] Specific manufacturing locations and sourcing details are not identified in the analysis.
+                        Not identified in analysis. The manufacturing locations and component sourcing information are not provided in the documentation.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide information about supply chain security measures, vendor verification, or component authenticity validation procedures.
+                        Not identified in analysis. The documentation does not provide information about supply chain security measures or assessments.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not specify component lifecycle status or indicate whether any components are deprecated or approaching end-of-life.
+                        Not identified in analysis. While the device uses several specific hardware components (MAX30102, DS18B20, MPU6050, ESP8266), their lifecycle status is not mentioned in the provided documentation.
                     </div>
                 </div>
                 
