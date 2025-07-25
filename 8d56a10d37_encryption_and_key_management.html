@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:38:35</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:22:54</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        Based on the analysis, no encryption is identified for data stored on the device. The device uses ESP32 flash memory for local storage of sensor data and configuration, but there is no evidence of encryption implementation for stored data. [Source: Section 11 - "Device Storage | No encryption identified"]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis shows local storage of sensor data, step counts, and configuration settings, but there is no explicit mention of encryption methods for stored data in the provided repository analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not contain information about any companion mobile applications or their encryption methods.
+                        Not identified in analysis. While the device analysis mentions Bluetooth connectivity to mobile applications, there is no information about mobile app implementations or their encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device connects to OpenWeatherMap API, there is no information about cloud storage or associated encryption methods.
+                        Not identified in analysis. While the device communicates with OpenWeatherMap API, there is no information about cloud storage or its encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The only identified protection for data in transit is standard WiFi WPA2 encryption for network communications. HTTP is used for weather API communications without additional security measures. [Source: Section 11, 12 - "Transit Data | WiFi WPA2 only" and "HTTP | Weather API | Public Internet | No additional security"]
+                        Based on the analysis, communications with external services (OpenWeatherMap API) use HTTP without encryption [Source: settings.h]. This represents a security concern as data is transmitted in plaintext.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not contain information about mobile app communications or their encryption methods.
+                        Not identified in analysis. While Bluetooth connectivity is present, there are no details about mobile app-to-cloud communication or its encryption methods.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis shows poor key management practices. API keys are stored in plain text, and there is no secure storage mechanism identified for cryptographic keys. The only key management mentioned is standard WiFi key management for WPA2. [Source: Section 11 - "API Authentication | Plain text API keys | No secure storage"]
+                        No formal key management system is identified in the analysis. API keys for services like OpenWeatherMap appear to be stored in plaintext in configuration files [Source: settings.h], which represents a security vulnerability.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis lists several software dependencies (Section 10), no specific cryptographic libraries are mentioned.
+                        Not identified in analysis. The component inventory lists several libraries (GxEPD2, ArduinoJson, BMP280_DEV, ESP32 Arduino Core) but no cryptographic libraries are specifically mentioned.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are identified: 1. Lack of encryption for stored data 2. Plain text storage of API keys 3. Unsecured HTTP communications for API calls 4. No additional security beyond basic WiFi WPA2 for data in transit [Source: Sections 9, 11, 12 - Privacy Risk Level and Encryption & Key Management sections]
+                        Yes, several security concerns are evident: 1. Use of unencrypted HTTP for API communications [Source: settings.h] 2. No visible encryption for stored data 3. API keys stored in plaintext 4. Absence of documented cryptographic libraries or encryption methods [Source: Section 11. ENCRYPTION & KEY MANAGEMENT]
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        No justification is provided in the analysis for the lack of encryption. This appears to be a security oversight rather than a deliberate design choice, as it's listed under "Privacy Risk Level" as a key concern. [Source: Section 9 - Privacy Risk Level]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The repository documentation does not provide any justification for the lack of encryption. Given the device collects personal data like location and activity information, the absence of encryption represents a security risk that should be addressed.
                     </div>
                 </div>
                 
