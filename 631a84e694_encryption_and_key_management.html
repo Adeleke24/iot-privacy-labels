@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Esp32_Mp3_Decoder</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/MrBuddyCasino/ESP32_MP3_Decoder.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/MrBuddyCasino/ESP32_MP3_Decoder.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:21:20</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:46:20</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        Based on the analysis, there appears to be no encryption implemented for data stored on the device. The analysis specifically notes "Device Storage | No Encryption | N/A | [Source: wifi.c]" in Section 11. WiFi credentials and other configuration data appear to be stored in plaintext in the NVS flash storage [Source: wifi.c].
+                    <div class="answer not-identified">
+                        The analysis indicates minimal encryption for locally stored data. WiFi credentials are stored using ESP32 NVS (Non-Volatile Storage) Encryption with hardware-based key storage [Source: main/wifi.c]. Audio buffer data is explicitly noted as not encrypted [Source: components/audio_player/audio_player.c]. Other local storage encryption methods are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not include information about the mobile application's data storage implementation.
+                        Not identified in analysis. The device analysis does not provide information about mobile application data storage encryption.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Cloud storage details are listed under "Areas with Unknown Status" and no cloud storage implementation details are provided in the analysis.
+                        Not identified in analysis. The device analysis does not mention cloud storage or associated encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis only confirms standard WPA/WPA2 security for WiFi communications [Source: wifi.c]. Beyond the basic WiFi security layer, no additional encryption methods for device-to-cloud communication are documented in the analysis.
+                        The analysis shows only standard wireless protocol encryption: - WiFi data uses WPA2 Protocol with standard WiFi key management [Source: main/wifi.c] - Bluetooth audio uses standard A2DP security with Bluetooth pairing keys [Source: components/bt_speaker/bt_app_av.c] Specific cloud communication encryption is not mentioned.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided analysis does not contain information about mobile app to cloud communication protocols or encryption.
+                        Not identified in analysis. The device analysis does not provide information about mobile app to cloud communication encryption.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer">
-                        The analysis does not detail specific key management practices. The only key-related information mentioned relates to standard WiFi WPA/WPA2 keys and Bluetooth security, but their generation, storage, and management processes are not documented. This is listed as an "Area Requiring Further Investigation" in the analysis.
+                        The analysis provides limited information about key management: - WiFi credentials use ESP32 Hardware Security Module for key storage [Source: main/app_main.c] - Bluetooth pairing keys are mentioned but management details are not specified - Key generation methods are not explicitly detailed in the analysis
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer">
-                        No specific cryptographic libraries are identified in the software components inventory (Section 10). The only security-related components mentioned are the standard ESP32 SDK and Bluetooth Stack, but their cryptographic capabilities and versions are not specified.
+                        The analysis identifies two main cryptographic components: - ESP32 Hardware Security Module (version not specified) [Source: main/app_main.c] - WPA2 Implementation via ESP32 WiFi Stack (version not specified) [Source: main/wifi.c]
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, several security concerns are evident: 1. Lack of encryption for stored device data [Source: Section 11] 2. Plaintext WiFi credentials storage [Source: Section 9 - Privacy Risk Level] 3. No explicit encryption for stored data [Source: Section 9 - Privacy Risk Level] 4. Audio data transmitted without additional encryption [Source: Section 11]
+                        Yes, the analysis highlights several security concerns: - Audio buffer data is explicitly noted as not encrypted - WiFi credential storage security is listed as requiring further investigation - Bluetooth pairing key management needs investigation - External RAM data protection is identified as an area requiring further investigation [Source: Section 12 - Areas Requiring Further Investigation]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        No justification for the lack of encryption is provided in the analysis. This appears to be a security oversight rather than a justified design decision, as it's listed under "Privacy Risk Level" concerns and "Areas Requiring Further Investigation" in the analysis.
+                        The analysis does not provide explicit justification for lack of encryption in certain areas. The audio buffer data is noted as unencrypted [Source: components/audio_player/audio_player.c], but no rationale is provided for this design decision.
                     </div>
                 </div>
                 
