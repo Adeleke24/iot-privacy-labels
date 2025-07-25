@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Protocentral Healthypi V3</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Protocentral/protocentral-healthypi-v3.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Protocentral/protocentral-healthypi-v3.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:18:17</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:39:52</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the device analysis, only I2C interface is clearly documented [Source: max30205.h]. Other physical interfaces are not explicitly identified in the analysis. While the device has network connectivity capabilities, the specific physical interface type (e.g., Ethernet, WiFi module connection) is not detailed in the provided analysis.
+                        The device supports multiple physical interfaces including: - USB CDC (Communications Device Class) - UART - WiFi connectivity [Source: Data Transmission section, README.md]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The analysis identifies the following protocols: - I2C Protocol for sensor data transfer (internal communication) - Register-based Communication for sensor control - WiFi for data transmission (mentioned in Data Transmission section) [Source: max30205.h, ads1292r.h]
+                        The identified communication protocols include: - MQTT (for cloud connectivity) - USB CDC protocol - UART protocol [Source: Data Transmission section, README.md]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        The analysis provides the following justifications: - I2C Protocol: Used for sensor communication and data transfer - Register-based Communication: Required for sensor control - WiFi: Used for transmitting video and motion events However, detailed justifications for each interface's necessity are not fully documented in the analysis.
+                        Based on the analysis: - USB CDC: For direct connection to PC and Raspberry Pi for vital sign monitoring - UART: For local communication with the Raspberry Pi - MQTT: For telemedicine applications and remote monitoring capabilities - WiFi: For wireless data transmission and cloud connectivity [Source: Data Transmission section, datasheet_summary_combined.md]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis indicates: - I2C Interface: Limited Access, internal only - Register-based Communication: Limited Access with command verification [Source: max30205.h, ads1292r.h] Access details for other interfaces are not identified in the analysis.
+                    <div class="answer">
+                        The interfaces provide the following access: - USB CDC & UART: Transmission of vital sign data (temperature, ECG, pulse oximetry) - WiFi/MQTT: Remote data streaming capability However, specific access control mechanisms are not detailed in the analysis. [Source: Data Transmission section]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        The analysis mentions: - Hardware-level protection for I2C interface - Command verification for register-based communication - Hardware addressing for I2C protocol [Source: max30205.h] Other safeguards are not identified in the analysis.
+                        Not identified in analysis. The documentation does not specify security measures or safeguards for any of the interfaces.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions device setup info collection (including Wi-Fi SSID and onboarding details), specific secure setup procedures are not documented.
+                    <div class="answer">
+                        While the analysis mentions device setup information including Wi-Fi SSID configuration, specific secure setup procedures are not detailed in the documentation. [Source: Other Collected Data section]
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability in any of the analyzed documentation.
+                        Not identified in analysis. No mention of MUD file availability in the provided documentation.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
-                    <div class="answer not-identified">
-                        The analysis indicates several privacy concerns: - Video and motion event data transmission over network - Unknown encryption status for transmitted data - Unclear data retention policies - Unknown cloud storage practices - Ability to infer user behavior through motion detection [Source: Data Collection & Storage, Data Transmission, Privacy Risk Level sections]
+                    <div class="answer">
+                        The device's network functions present several privacy considerations: - Collects sensitive medical data (vital signs, ECG) - Capable of continuous data transmission - Has cloud connectivity through MQTT - No documented encryption mechanisms - No documented privacy policy [Source: Data Sharing & Privacy section, Final Assessment section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis documents the used protocols (I2C, register-based communication, WiFi), it does not specify whether there are any unused or unnecessary ports/protocols present in the system.
+                        Not identified in analysis. While multiple interfaces are present (USB, UART, WiFi), the documentation doesn't specify which ports/protocols might be unnecessary or pose specific security risks.
                     </div>
                 </div>
                 
