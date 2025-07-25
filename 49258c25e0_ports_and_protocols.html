@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Pirate Audio</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/pimoroni/pirate-audio.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/pimoroni/pirate-audio.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:23:53</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:49:02</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports the following physical interfaces: - SPI: Used for display communication - I2S: Used for audio data transfer - GPIO: Used for button inputs - Audio jack: For analog audio output [Source: Ports & Protocols section of analysis]
+                        The device analysis indicates the following physical interfaces: - SPI interface (for ST7789 LCD display) - I2S interface (for audio) - Physical buttons (4 control buttons) - Audio output interface (DAC) - Audio input interface (on Dual Mic variant) [Source: README.md, Data Transmission section]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following communication protocols: - I2S (Inter-IC Sound): For audio data streaming - SPI (Serial Peripheral Interface): For display control - GPIO: For button state monitoring [Source: Ports & Protocols section, Data Transmission section]
+                        The analysis identifies two main communication protocols: - SPI (Serial Peripheral Interface) - used for display communication - I2S (Integrated Interchip Sound) - used for audio transmission [Source: Data Transmission section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Each interface serves a specific functional purpose: - SPI: Required for controlling the ST7789 LCD display - I2S: Necessary for high-quality digital audio transfer between components - GPIO: Required for button input functionality - Audio jack: Essential for audio output functionality [Source: Component Inventory section, Physical Actuation section]
+                        Based on the device's primary functions: - SPI: Required for controlling the ST7789 LCD display - I2S: Necessary for high-quality digital audio transmission - Physical buttons: Required for user control interface - Audio interfaces: Essential for the device's core audio playback/recording functionality [Source: Executive Summary, Data Transmission section]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        Based on the available analysis: - SPI: Display control and data output - I2S: Audio data streaming - GPIO: Button input reading - Audio jack: Analog audio output However, detailed access specifications and limitations are not fully documented in the analysis.
+                        The analysis indicates: - Display (SPI): Output only - Audio DAC: Output only - Microphone (Dual Mic variant): Input only - Buttons: Input only [Source: Sensor Presence Analysis section]
                     </div>
                 </div>
                 
@@ -193,8 +193,8 @@
                     <div class="question">
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
-                    <div class="answer">
-                        The analysis mentions limited safeguards: - Hardware power-on reset - Automatic power-down features - Input debouncing on buttons No additional security measures are documented for the interfaces. [Source: Ports & Protocols section]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The provided information does not detail any specific security safeguards for the interfaces.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While there are setup procedures mentioned in the installation scripts [Source: mopidy/install.sh], specific security measures during setup are not documented.
+                        Not identified in analysis. The documentation does not provide specific security guidance for device setup.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of MUD file availability in any of the documentation.
+                        Not identified in analysis. No mention of a MUD file in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device primarily handles local audio data and display functions. The main privacy concerns identified are: - Unencrypted local audio storage - No documented data retention policies - Integration with services like Spotify and Mopidy could have privacy implications [Source: Data Sharing & Privacy section, Final Assessment section]
+                        Based on the analysis, the device appears to operate locally without network connectivity. Data transmission is limited to internal communications (SPI, I2S) with no external data sharing or cloud connectivity identified. [Source: Data Transmission, Data Sharing & Privacy sections]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documented interfaces all appear to serve specific functional purposes, but there's no explicit analysis of unused or unnecessary ports/protocols.
+                        Not identified in analysis. The documented interfaces and protocols appear to be necessary for core device functionality, but there's no comprehensive port/protocol audit information provided.
                     </div>
                 </div>
                 
