@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Bioacqai</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/abhishekranakoti/BioAcqAi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/abhishekranakoti/BioAcqAi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:52:59</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:14:27</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device analysis confirms local storage of biosignal data, there is no specific mention of encryption methods for data at rest on the device.
+                        Not identified in analysis. While the device clearly collects biosignal data, there is no explicit mention of on-device storage encryption methods in the provided documentation.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions a mobile app as a transmission destination, there is no information about its storage encryption methods.
+                        Not identified in analysis. While the documentation mentions mobile app connectivity, no specific details about mobile application data storage encryption are provided.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Though cloud storage is confirmed [Source: Data Collection & Storage section], specific cloud encryption methods are not detailed.
+                        Not identified in analysis. Though cloud storage is mentioned in the Data Transmission section, specific cloud storage encryption methods are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        AES encryption is used for data in transit [Source: Section 11 - Encryption & Key Management]. This is implemented over both WiFi and BLE protocols [Source: Section 12 - Ports & Protocols]. However, specific AES implementation details (key size, mode of operation) are not provided.
+                        While the analysis indicates data is "encrypted in transit" [Source: Data Transmission section], specific encryption methods are not detailed. More investigation would be needed to determine the exact protocols and encryption standards used.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While data transmission between mobile app and cloud is mentioned, specific encryption methods for this path are not detailed.
+                        Not identified in analysis. No specific details about mobile app to cloud communication encryption are provided in the documentation.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While encryption is mentioned, there are no details about key generation, storage, or management processes.
+                        Not identified in analysis. The documentation does not provide information about key management processes or infrastructure.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Though encryption is implemented, specific cryptographic libraries and their versions are not mentioned in the documentation.
+                        Not identified in analysis. While the device implements some form of encryption for data transmission, specific cryptographic libraries and versions are not mentioned in the provided documentation.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
-                    <div class="answer not-identified">
-                        Based on the limited information available, several security concerns exist: 1. Lack of documented encryption for data at rest 2. Incomplete documentation of encryption implementations 3. No specified key management procedures 4. Unknown cryptographic library versions [Source: Sections 11 & 12]
+                    <div class="answer">
+                        Based on the limited information provided, there are potential security concerns due to: 1. Lack of documented encryption methods for stored data 2. Unclear key management practices 3. Unspecified encryption protocols for sensitive medical data transmission However, a full security assessment would require more detailed technical documentation.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer">
-                        This question is partially applicable - while encryption is used for data in transit (AES), there's no documented justification for the apparent lack of encryption in other areas like local storage. The analysis doesn't provide explanations for these gaps in encryption coverage.
+                        Not applicable. The analysis indicates that some form of encryption is used, at least for data in transit [Source: Data Transmission section], though implementation details are lacking.
                     </div>
                 </div>
                 
