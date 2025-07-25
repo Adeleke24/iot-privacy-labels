@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Pirate Audio</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/pimoroni/pirate-audio.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/pimoroni/pirate-audio.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:23:38</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:48:51</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
-                    <div class="answer">
-                        Based on the analysis, no encryption methods are implemented for data stored on the device. Local audio files and configuration files are stored unencrypted on the system storage/SD card. [Source: Section 11 - Encryption & Key Management]
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis shows local storage of WAV files on SD card but does not mention any encryption methods for stored data.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention or include any mobile applications.
+                        Not identified in analysis. The device analysis does not mention any mobile applications associated with the Pirate Audio device.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device appears to operate primarily locally, and there is no evidence of cloud storage implementation in the provided analysis.
+                        Not identified in analysis. The device analysis explicitly states there is no cloud storage functionality ("Cloud Storage: No").
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device primarily uses local communication protocols (I2S, SPI) for data transfer, and no cloud connectivity encryption is documented. [Source: Section 3 - Data Transmission]
+                        Not identified in analysis. The device analysis shows only local data transmission via SPI and I2S protocols with no cloud connectivity. It explicitly states "Data Encrypted in Transit: No".
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application or cloud connectivity is documented in the device analysis.
+                        Not identified in analysis. No mobile app or cloud connectivity is mentioned in the device analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation shows no implementation of cryptographic key management systems or processes.
+                        Not identified in analysis. No cryptographic key management is mentioned in the provided device analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No cryptographic libraries are listed in the component inventory or elsewhere in the documentation. [Source: Section 10 - Component Inventory & Security Analysis]
+                        Not identified in analysis. No cryptographic libraries are mentioned in the provided device analysis.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, there are security concerns due to the complete lack of encryption implementation. Specifically: - Local audio files are stored unencrypted - Configuration files are unencrypted - Data transmission protocols (I2S, SPI) operate without encryption [Source: Section 11 - Encryption & Key Management]
+                        Yes. The primary security concern is the complete lack of encryption for both stored data and data in transit. The analysis shows raw audio files are stored unencrypted on the SD card, and data transmission occurs over unencrypted SPI and I2S protocols [Source: Data Transmission section].
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        No explicit justification for the lack of encryption is provided in the analysis. The device appears to be designed as a basic audio HAT for Raspberry Pi with local functionality only. However, given that it handles audio data, which could be sensitive, the lack of encryption should be considered a security concern that needs addressing. [Source: Section 9 - Final Assessment]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis confirms no encryption is used, it does not provide any justification for this design choice. The device appears to be designed as a local audio playback/recording system with no network connectivity, which may explain the lack of encryption, but this is not explicitly stated as justification.
                     </div>
                 </div>
                 
