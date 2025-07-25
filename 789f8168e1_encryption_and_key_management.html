@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Feather Th Azure Iot</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/bwyatt/feather-th-azure-iot.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/bwyatt/feather-th-azure-iot.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:37:38</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:10:08</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device has flash memory and stores sensor readings locally, the analysis does not specify any encryption methods for data at rest on the device.
+                        Not identified in analysis. The documentation indicates no local storage of sensor data on the device, so there are no encryption methods to analyze for device storage.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not mention any mobile applications associated with the system.
+                        Not identified in analysis. The device analysis does not mention any mobile application component.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses Azure IoT for cloud storage, the specific encryption methods for cloud-stored data are not detailed in the provided documentation.
+                        Not identified in analysis. While Azure IoT integration is mentioned as planned [Source: README.md], specific details about cloud storage encryption are not provided in the documentation.
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
-                    <div class="answer">
-                        TLS encryption is used for data transmission to Azure IoT [Source: code.py, Section 11]. However, the specific TLS version and cipher suites are not detailed in the analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While WiFi connectivity and Azure IoT integration are mentioned [Source: README.md, code.py], specific encryption methods for data transmission are not detailed in the documentation.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mobile application is mentioned in the device documentation.
+                        Not identified in analysis. No mobile application component is mentioned in the device analysis.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
-                    <div class="answer">
-                        The analysis only mentions that key management follows "Azure IoT security protocols" [Source: Section 11], but specific details about key generation, storage, and management are not provided.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device uses WiFi connectivity, there is no documentation of cryptographic key management processes.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses encryption for cloud communication, specific cryptographic libraries and their versions are not mentioned in the documentation.
+                        Not identified in analysis. The only version information provided relates to CircuitPython v8.x (alpha) [Source: Repository Information], but no specific cryptographic libraries are mentioned.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
-                    <div class="answer not-identified">
-                        Based on the limited information provided, several security concerns exist: 1. Lack of documented encryption for local data storage 2. Unspecified cloud storage security measures 3. Incomplete documentation of cryptographic implementations 4. Unknown key management practices [Source: Sections 9, 11]
+                    <div class="answer">
+                        Based on the limited documentation, there are potential security concerns due to: 1. Lack of documented encryption methods for data in transit 2. Undefined security measures for Azure IoT integration 3. Missing security documentation [Source: Final Assessment section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device does use encryption for data transmission (TLS), but for areas where encryption status is unknown (local storage, etc.), no justification is provided in the documentation.
+                        Not identified in analysis. The documentation does not provide any justification for the presence or absence of encryption methods.
                     </div>
                 </div>
                 
