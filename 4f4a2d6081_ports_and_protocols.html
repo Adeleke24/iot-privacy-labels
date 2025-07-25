@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Protocentral Healthypi V3</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Protocentral/protocentral-healthypi-v3.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Protocentral/protocentral-healthypi-v3.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 23:39:52</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:49:02</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        The device supports multiple physical interfaces including: - USB CDC (Communications Device Class) - UART - WiFi connectivity [Source: Data Transmission section, README.md]
+                        Based on the analysis, the device supports: - UART interface - USB connection - WiFi connectivity [Source: Data Transmission section from analysis] However, complete interface specifications are limited in the provided analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The identified communication protocols include: - MQTT (for cloud connectivity) - USB CDC protocol - UART protocol [Source: Data Transmission section, README.md]
+                        The device uses: - MQTT protocol for cloud communication - UART protocol for direct communication - WiFi for wireless connectivity [Source: Data Transmission section from analysis]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the analysis: - USB CDC: For direct connection to PC and Raspberry Pi for vital sign monitoring - UART: For local communication with the Raspberry Pi - MQTT: For telemedicine applications and remote monitoring capabilities - WiFi: For wireless data transmission and cloud connectivity [Source: Data Transmission section, datasheet_summary_combined.md]
+                        Based on the device's function as a vital sign monitoring system: - UART/USB: For direct data transfer and real-time monitoring - WiFi/MQTT: For remote monitoring and telemedicine applications - These interfaces support the primary purpose of transmitting health data for monitoring [Source: Executive Summary and Data Transmission sections]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The interfaces provide the following access: - USB CDC & UART: Transmission of vital sign data (temperature, ECG, pulse oximetry) - WiFi/MQTT: Remote data streaming capability However, specific access control mechanisms are not detailed in the analysis. [Source: Data Transmission section]
+                        Not fully identified in analysis. While we know the interfaces transmit sensor data (temperature, ECG, and pulse oximetry) in real-time, specific access controls and permissions for each interface are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not specify security measures or safeguards for any of the interfaces.
+                        Not identified in analysis. The documentation does not specify security measures or safeguards for the interfaces.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer">
-                        While the analysis mentions device setup information including Wi-Fi SSID configuration, specific secure setup procedures are not detailed in the documentation. [Source: Other Collected Data section]
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the device is described as a HAT for Raspberry Pi, specific secure setup procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
-                    <div class="answer">
-                        The device's network functions present several privacy considerations: - Collects sensitive medical data (vital signs, ECG) - Capable of continuous data transmission - Has cloud connectivity through MQTT - No documented encryption mechanisms - No documented privacy policy [Source: Data Sharing & Privacy section, Final Assessment section]
+                    <div class="answer not-identified">
+                        The device handles sensitive medical data including: - ECG waveform data - Body temperature - Blood oxygen levels These are transmitted in real-time and can be stored locally and in the cloud. However, encryption status is unknown, and no privacy policy is mentioned, creating potential privacy risks. [Source: Data Collection & Storage and Data Sharing & Privacy sections]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While multiple interfaces are present (USB, UART, WiFi), the documentation doesn't specify which ports/protocols might be unnecessary or pose specific security risks.
+                        Not identified in analysis. While the device uses multiple communication protocols (MQTT, UART, WiFi), the documentation doesn't specify which ports/protocols might be unnecessary or pose security risks.
                     </div>
                 </div>
                 
