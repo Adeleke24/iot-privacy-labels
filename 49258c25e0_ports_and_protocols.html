@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Pirate Audio</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/pimoroni/pirate-audio.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/pimoroni/pirate-audio.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 23:49:02</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:58:40</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        The device analysis indicates the following physical interfaces: - SPI interface (for ST7789 LCD display) - I2S interface (for audio) - Physical buttons (4 control buttons) - Audio output interface (DAC) - Audio input interface (on Dual Mic variant) [Source: README.md, Data Transmission section]
+                        Based on the analysis, the device supports: - SPI interface (for display communication) [Source: Data Transmission section] - I2S interface (for audio transmission) [Source: Data Transmission section] - Button interfaces (4 physical buttons) [Source: Executive Summary] - Audio output interface (via DAC) [Source: Sensor Presence Analysis] - Microphone input (on Dual Mic variant) [Source: Sensor Presence Analysis]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The analysis identifies two main communication protocols: - SPI (Serial Peripheral Interface) - used for display communication - I2S (Integrated Interchip Sound) - used for audio transmission [Source: Data Transmission section]
+                        The analysis identifies two main communication protocols: - SPI (Serial Peripheral Interface) for display communication - I2S (Inter-IC Sound) for audio data transmission [Source: Data Transmission section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's primary functions: - SPI: Required for controlling the ST7789 LCD display - I2S: Necessary for high-quality digital audio transmission - Physical buttons: Required for user control interface - Audio interfaces: Essential for the device's core audio playback/recording functionality [Source: Executive Summary, Data Transmission section]
+                        Based on the device's primary functions: - SPI: Required for controlling the ST7789 LCD display - I2S: Necessary for high-quality digital audio transmission - Button interfaces: Required for user control - Audio interfaces: Core functionality as an audio device [Source: Executive Summary, Data Transmission section]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis indicates: - Display (SPI): Output only - Audio DAC: Output only - Microphone (Dual Mic variant): Input only - Buttons: Input only [Source: Sensor Presence Analysis section]
+                        The analysis indicates: - Display (SPI): Output only - Audio DAC: Output only - Buttons: Input only - Microphone (Dual Mic variant): Input only [Source: Sensor Presence Analysis]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The provided information does not detail any specific security safeguards for the interfaces.
+                        Not identified in analysis. The provided documentation doesn't specify any security measures or safeguards for the interfaces.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide specific security guidance for device setup.
+                        While the analysis mentions device setup info including Wi-Fi SSID and onboarding details [Source: Other Collected Data section], specific secure setup procedures are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No mention of a MUD file in the provided documentation.
+                        Not identified in analysis. The documentation does not mention any MUD file availability.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device appears to operate locally without network connectivity. Data transmission is limited to internal communications (SPI, I2S) with no external data sharing or cloud connectivity identified. [Source: Data Transmission, Data Sharing & Privacy sections]
+                        The analysis indicates: - Device links with external music streaming services - No identified third-party data sharing - No data sold to external parties - No privacy policy mentioned [Source: Data Sharing & Privacy section, Data Linkage section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documented interfaces and protocols appear to be necessary for core device functionality, but there's no comprehensive port/protocol audit information provided.
+                        Not identified in analysis. The documentation doesn't specify any unused or unnecessary ports/protocols. All identified interfaces appear to serve specific functional purposes for the device's core audio and display capabilities.
                     </div>
                 </div>
                 
