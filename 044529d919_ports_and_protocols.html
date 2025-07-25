@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Bioacqai</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/abhishekranakoti/BioAcqAi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/abhishekranakoti/BioAcqAi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:53:13</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:15:44</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports UART interface for debugging [Source: uart.c]. While WiFi and BLE wireless interfaces are confirmed [Source: wifi_ble.c, README.md], other physical interfaces are not explicitly identified in the analysis.
+                        Based on the provided analysis, the device supports WiFi and Bluetooth (BLE) wireless interfaces [Source: README.md, wifi_ble.c]. However, details about physical interfaces like USB or Ethernet are not explicitly identified in the analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - WiFi for data transmission - Bluetooth Low Energy (BLE) for data transmission - UART for debugging purposes [Source: README.md, wifi_ble.c, uart.c]
+                        The device uses: - WiFi - Bluetooth Low Energy (BLE) These protocols are used for real-time data transmission to mobile apps, hospital servers, and cloud dashboards [Source: README.md, wifi_ble.c]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the analysis: - WiFi/BLE: Used for transmitting biosignal data to mobile apps, hospital servers, and cloud dashboards in real-time - UART: Used for debugging purposes [Source: README.md, wifi_ble.c]
+                        The wireless interfaces appear to be justified for: - Real-time transmission of biosignal data (ECG/EMG/EEG/EOG/PPW) - Integration with external systems (MATLAB, Python, ThingSpeak) - Communication with mobile apps and hospital servers [Source: README.md]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis indicates: - WiFi/BLE: Provides data transmission capabilities for biosignal data - UART: Provides debugging access However, specific access levels and permissions for each interface are not fully detailed in the analysis. [Source: README.md, wifi_ble.c, uart.c]
+                        Not completely identified in analysis. While we know the interfaces are used for data transmission, specific access levels and permissions across each interface are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        The analysis indicates AES encryption is implemented for data in transit over WiFi and BLE connections, and SHA-based checks are used for data integrity. However, specific safeguards for UART and other potential interfaces are not identified in the analysis. [Source: README.md]
+                        The analysis mentions AES encryption for data transmission, but detailed safeguards for each interface are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide specific information about secure device setup procedures.
+                        Not identified in analysis. The setup and configuration procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions could impact privacy in several ways: - Transmits sensitive medical/biosignal data over wireless networks - Connects to multiple endpoints (mobile apps, hospital servers, cloud dashboards) - Involves real-time data transmission The analysis indicates a "Medium" privacy risk level, particularly due to medical data sensitivity and wireless transmission. [Source: README.md, Final Assessment section]
+                        The device's network functions could significantly impact privacy due to: - Collection and transmission of sensitive medical data (biosignals) - Real-time data transmission to multiple destinations - Integration with third-party systems However, specific privacy controls and policies are not detailed in the analysis [Source: Data Sharing & Privacy section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the documented interfaces (WiFi, BLE, UART) appear to have specific purposes, the analysis does not provide information about unused or unnecessary ports/protocols.
+                        Not identified in analysis. While WiFi and BLE are documented as being used, there's no information about unused or unnecessary ports/protocols.
                     </div>
                 </div>
                 
