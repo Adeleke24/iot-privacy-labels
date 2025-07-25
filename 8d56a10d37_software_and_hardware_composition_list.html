@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Watchy</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/sqfmi/Watchy.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/sqfmi/Watchy.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:38:22</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:22:42</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What software components and libraries are used in this device, including their versions?
                     </div>
                     <div class="answer not-identified">
-                        Based on the analysis, the following software components are identified: - ESP32 Arduino Core (version not specified) - GxEPD Library v2.x (LGPL licensed) - ArduinoJson v6.x (MIT licensed) - BMA423 Driver (version unknown, proprietary) [Source: platform.ini, library.json, Watchy_7_SEG.cpp]
+                        Based on the analysis, the following software components are identified: - GxEPD2 Library (version unknown) - For E-paper display control [Source: library.properties] - ArduinoJson (version unknown) - JSON parsing library [Source: library.properties] - BMP280_DEV (version unknown) - Temperature sensor library [Source: Watchy.h] - ESP32 Arduino Core (version unknown) - Core microcontroller framework [Source: platform.txt] Note: Specific version numbers are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -166,8 +166,8 @@
                     <div class="question">
                         <strong>Q2:</strong> What hardware components are present in this device?
                     </div>
-                    <div class="answer">
-                        The analysis identifies these hardware components: - ESP32 microcontroller with flash memory - E-Paper display - Accelerometer (BMA423) - Battery monitoring system - WiFi module - Bluetooth module - RTC (Real-Time Clock) [Source: Watchy_7_SEG.cpp]
+                    <div class="answer not-identified">
+                        The analysis identifies these hardware components: - ESP32 Microcontroller (manufacturer: Espressif) [Source: Watchy.h] - E-Paper Display (manufacturer unknown) [Source: Watchy.h] - BMP280 Temperature Sensor (manufacturer: Bosch) [Source: Watchy.h] - Accelerometer (type unspecified) [Source: Watchy_7_SEG.cpp] - Internal storage hardware [Source: Watchy_7_SEG.cpp] - Bluetooth module (integrated with ESP32) [Source: Watchy_7_SEG.cpp]
                     </div>
                 </div>
                 
@@ -175,8 +175,8 @@
                     <div class="question">
                         <strong>Q3:</strong> Are there any known vulnerabilities in the software or hardware components?
                     </div>
-                    <div class="answer">
-                        Not explicitly identified in analysis. While the analysis mentions "plain text API keys" and "unencrypted data transmission" as security concerns [Source: Section 9 - Privacy Risk Level], specific CVEs or known vulnerabilities are not detailed.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis mentions "exposed API keys in code" as a security concern [Source: Section 9], specific CVEs or known vulnerabilities for the components are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What licenses are used for third-party software components?
                     </div>
                     <div class="answer">
-                        The analysis identifies: - GxEPD Library: LGPL license - ArduinoJson: MIT license - BMA423 Driver: Proprietary [Source: Section 10 - Component Inventory & Security Analysis]
+                        The analysis identifies these licenses: - GxEPD2 Library: LGPL [Source: library.properties] - ArduinoJson: MIT [Source: library.properties] - ESP32 Arduino Core: Apache 2.0 [Source: platform.txt] - BMP280_DEV: License not specified
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> Where are the hardware components manufactured and sourced from?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The manufacturer SQFMI is mentioned [Source: Executive Summary], but component sourcing information is not provided.
+                        The analysis only identifies Espressif as the manufacturer of the ESP32 and Bosch as the manufacturer of the BMP280 sensor. Manufacturing locations and sourcing information for other components are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> What is the supply chain security posture of the components?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses various components, their supply chain security details are not documented in the provided analysis.
+                        Not identified in analysis. The provided device analysis does not include information about supply chain security measures or assessments.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Are there any deprecated or end-of-life components being used?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While component versions are partially documented, there is no specific mention of deprecated or end-of-life status for any components.
+                        Not identified in analysis. The device analysis does not provide information about the lifecycle status of any software or hardware components used in the device.
                     </div>
                 </div>
                 
