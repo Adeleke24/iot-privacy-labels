@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Smart_Health_Monitoring_System</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Nirvan007/Smart_Health_Monitoring_System.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Nirvan007/Smart_Health_Monitoring_System.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 23:35:10</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:43:03</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis confirms local storage exists on the ESP8266 4MB Flash memory [Source: datasheet_summary_combined.md], there is no explicit mention of encryption methods for stored data on the device.
+                        Not identified in analysis. The documentation shows that local storage exists for sensor data, but does not specify any encryption methods used for data at rest on the device.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the system appears to have connectivity features, the analysis does not provide information about mobile applications or their data storage encryption methods.
+                        Not identified in analysis. While the system appears to have connectivity features, there is no specific mention of a mobile application or its data storage encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the system uses Google Firebase cloud for storage [Source: README.md], the specific encryption methods for cloud-stored data are not detailed in the provided analysis.
+                        Not identified in analysis. While the analysis confirms data is stored in Google Firebase cloud server [Source: Data Transmission section], the specific encryption methods used for cloud storage are not detailed.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While data transmission occurs via WiFi to Google Firebase cloud [Source: README.md], the encryption methods for data in transit are not specified.
+                        Not identified in analysis. The documentation confirms WiFi transmission to Google Firebase cloud server [Source: Data Transmission section], but does not specify the encryption protocols used to secure this transmission.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not mention mobile app to cloud communications or associated encryption methods.
+                        Not identified in analysis. No information is provided about mobile app communication or its encryption methods.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide information about cryptographic key management practices.
+                        Not identified in analysis. No information is provided about cryptographic key management processes or infrastructure.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No specific cryptographic libraries or their versions are mentioned in the provided documentation.
+                        Not identified in analysis. The device analysis does not mention any cryptographic libraries or their versions.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Based on the available analysis, there is a significant security concern due to the lack of documented encryption methods for sensitive health data both in storage and transit. The system collects identifiable health information including heart rate, SpO2, and temperature [Source: README.md], but there's no evidence of encryption implementation to protect this sensitive data.
+                        Based on the available analysis, there is a significant security concern due to the lack of documented encryption methods for sensitive health data being collected and transmitted. The system handles personally identifiable health information [Source: Data Collection & Storage section] but provides no information about encryption protocols, representing a potential security and compliance risk.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The documentation does not provide any justification for the apparent lack of encryption. This is particularly concerning given the sensitive nature of the health data being collected and transmitted.
+                        Not identified in analysis. The documentation does not provide any justification for the absence of encryption details. Given the sensitive nature of health data being collected and transmitted, this represents a significant documentation gap that should be addressed.
                     </div>
                 </div>
                 
