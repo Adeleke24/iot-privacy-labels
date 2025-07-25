@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Home Fi</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/JobinBiju/Home-Fi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/JobinBiju/Home-Fi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:20:04</p>
+                <p><strong>Generated:</strong> 2025-07-25 02:14:33</p>
             </div>
 
             <div class="content-box">
@@ -157,8 +157,8 @@
                     <div class="question">
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
-                    <div class="answer not-identified">
-                        Based on the analysis provided, the device uses WiFi connectivity, but complete physical interface specifications are not explicitly detailed in the provided analysis. The device appears to be an ESP32-based system which typically supports WiFi, Bluetooth, and USB for programming, but specific implementation details are not identified in the analysis.
+                    <div class="answer">
+                        From the provided analysis, specific physical interfaces are not fully detailed. While we know the device uses WiFi for connectivity [Source: Data Transmission section], other physical interfaces are not explicitly identified in the analysis. The device appears to be ESP32-based [Source: Repository Description] which typically includes WiFi, Bluetooth, and GPIO interfaces, but the specific implementation details are not confirmed in the provided analysis.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - MQTT over TLS for communication with Adafruit IO cloud server - WiFi for network connectivity [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]
+                        The device uses: - MQTT protocol for data transmission - WiFi for network connectivity - Communication with Adafruit IO cloud platform [Source: Data Transmission section]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        From the analysis, the protocols serve these purposes: - MQTT: Used for efficient IoT data transmission to Adafruit IO for temperature and humidity monitoring - WiFi: Required for cloud connectivity and remote device control - TLS: Provides security for data transmission [Source: ESP32_AdafruitIO.ino]
+                        Based on the analysis: - MQTT/WiFi: Used for real-time data transmission of sensor data (temperature/humidity) and device control states - Adafruit IO integration: Enables cloud-based monitoring and control of home appliances [Source: Executive Summary, Data Transmission section] However, detailed justifications for each protocol choice are not explicitly stated in the analysis.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer not-identified">
-                        The analysis shows that WiFi interface provides: - Transmission of sensor data (temperature and humidity) to Adafruit IO - Control of RGB LED output - Real-time device status monitoring However, complete access control specifications are not identified in the analysis.
+                        The analysis shows: - Remote access for appliance control - Real-time monitoring capabilities - Sensor data transmission (temperature/humidity) - RGB light control [Source: Executive Summary, Data Transmission section] Specific access controls and limitations are not identified in the analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        The only identified safeguard in the analysis is the use of TLS for MQTT communications with Adafruit IO. Other specific security measures are not identified in the analysis.
+                        Not identified in analysis. The documentation does not specify any security measures or safeguards for the interfaces.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses Adafruit IO and requires WiFi setup, specific secure setup procedures are not detailed in the provided analysis.
+                        Not identified in analysis. While the device is described as a home automation system, specific secure setup procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis.
+                        Not identified in analysis. No mention of MUD file availability is present in the documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The analysis shows several privacy considerations: - Continuous data transmission to Adafruit IO cloud servers - Collection and transmission of environmental data (temperature and humidity) - Data sharing with third-party cloud service provider (Adafruit IO) - No explicit privacy policy mentioned [Source: TempHumidAPI.dart]
+                        The analysis indicates several privacy considerations: - Continuous data sharing with third-party cloud service (Adafruit IO) - Real-time transmission of sensor data and device states - No mentioned privacy policy or user consent mechanisms [Source: Data Sharing & Privacy section] However, specific privacy impacts and protections are not detailed.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the device uses MQTT and WiFi protocols, there is no information about unused or unnecessary ports or protocols in the provided analysis.
+                        Not identified in analysis. The documentation does not provide information about unused ports or protocols, nor does it detail a security assessment of the implemented communications infrastructure.
                     </div>
                 </div>
                 
