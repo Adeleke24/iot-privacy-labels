@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Zswatch</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/ZSWatch/ZSWatch.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/ZSWatch/ZSWatch.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:07:30</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:32:22</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        Based on the analysis, the device supports: - SWD (Serial Wire Debug) interface for debugging/programming [Source: app/pytest/utils.py] - QSPI interface for flash storage access [Source: app/scripts/rtt_flash_loader.py] - RTT (Real-Time Transfer) interface for debugging [Source: app/pytest/utils.py]
+                        Based on the analysis, the device supports: - SWD Interface (for debugging/programming) - QSPI Interface (for external flash access) - Bluetooth Low Energy (wireless communication) - RTT Interface (for debugging) [Source: app/pytest/utils.py, app/scripts/flash_util.py, app/src/ble/ble_comm.c]
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols: - Bluetooth Low Energy (BLE) for device-to-mobile communication [Source: app/src/ble/ble_comm.c] - RTT protocol for debugging purposes [Source: app/pytest/utils.py] - SAADC protocol for internal battery monitoring [Source: app/src/basic_battery/battery.c]
+                        The device uses: - Bluetooth Low Energy (BLE) v5.3 for device communication - QSPI protocol for external flash communication - RTT protocol for debugging purposes - HTTPS/TLS 1.2+ for cloud communications [Source: app/src/ble/ble_transport.c, app/scripts/flash_util.py, website/src/pages/update.js]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Each interface/protocol serves a specific purpose: - BLE: Primary communication protocol for sensor data transmission and mobile device connectivity - SWD: Required for device programming and debugging during development - QSPI: Necessary for local storage of sensor data and device configuration - RTT: Enables debugging capabilities - SAADC: Required for battery level monitoring [Source: Multiple files in app/src/]
+                        Each interface serves a specific purpose: - BLE: Primary communication protocol for device-to-mobile app connectivity - QSPI: Required for external flash storage access - SWD: Necessary for device programming and debugging - RTT: Development and debugging purposes - HTTPS: Secure firmware updates and cloud communication [Source: Various files in analysis]
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
                     <div class="answer">
-                        The analysis shows the following access levels: - SWD: Full device access for debugging/programming - QSPI: Read/Write access to flash storage - BLE: Limited access through pairing mechanism - RTT: Full debug access but requires physical debug probe [Source: app/pytest/utils.py, app/src/ble/ble_comm.c]
+                        - SWD: Full device access for debugging/programming - QSPI: Write/Read access to external flash - BLE: Limited access through GATT services - RTT: Read/Write access for debugging [Source: app/pytest/utils.py, app/src/ble/ble_comm.c]
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer">
-                        The following safeguards are identified: - BLE: Uses BT_SECURITY_L2 security level with standard BLE pairing keys [Source: app/src/ble/ble_comm.c] - SWD: Debug protection mentioned but details not specified [Source: app/pytest/utils.py] - QSPI: No explicit protection mechanisms identified - SAADC: Hardware-restricted access [Source: app/src/basic_battery/battery.c]
+                        The analysis shows limited safeguard information: - BLE: Uses Security Level 2 pairing - SWD: Debug password protection mentioned - HTTPS: TLS 1.2+ encryption No explicit safeguards mentioned for QSPI or RTT interfaces [Source: app/src/ble/ble_comm.c, website/src/pages/update.js]
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
                     <div class="answer">
-                        Not fully identified in analysis. While BLE pairing is mentioned, specific secure setup procedures are not detailed in the provided documentation.
+                        Not fully identified in analysis. While BLE pairing is mentioned, specific secure setup procedures are not detailed in the provided analysis.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. No evidence of a MUD file was found in the provided repository information.
+                        Not identified in analysis. No mention of MUD file implementation in the repository documentation.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
                     <div class="answer">
-                        The device's network functions have several privacy implications: - Continuous BLE transmission of sensor data - Collection and transmission of location data - Access to mobile device notifications - Potential for behavior tracking through sensor data analysis [Source: app/src/ble/ble_comm.c, Section 9: Privacy Risk Level]
+                        The device's network functions could impact privacy through: - Collection of location data - Activity monitoring - Access to user notifications - BLE connectivity that could potentially be tracked Risk level is assessed as "Medium" in the analysis [Source: Section 9 - Final Assessment]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer">
-                        The analysis doesn't explicitly identify unused ports/protocols. However, the debug interfaces (SWD and RTT) could pose security risks if left accessible in production devices, though they are necessary for development. [Source: app/pytest/utils.py]
+                        Not fully identified in analysis. While debug interfaces (SWD, RTT) are present, it's unclear if these are disabled in production firmware. These could pose security risks if left enabled in production devices.
                     </div>
                 </div>
                 
