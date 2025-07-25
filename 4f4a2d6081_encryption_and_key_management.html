@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Protocentral Healthypi V3</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/Protocentral/protocentral-healthypi-v3.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/Protocentral/protocentral-healthypi-v3.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 04:18:02</p>
+                <p><strong>Generated:</strong> 2025-07-24 23:39:39</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis document does not specify any encryption methods for data stored locally on the device. Section 11 "Encryption & Key Management" explicitly states "Device Storage Encryption: Unknown" with no clear evidence of encryption implementation found in analyzed files.
+                        Not identified in analysis. While the device uses an ATSAMD21 microcontroller with local storage capabilities, there is no explicit mention of encryption methods for stored data in the provided documentation.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis does not contain any information about mobile applications or their associated encryption methods.
+                        Not identified in analysis. The documentation does not mention any mobile applications or their associated encryption methods.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Section 11 specifically notes "Cloud Storage Encryption: Unknown" and cloud storage practices are listed as unknown in the Privacy Risk Level assessment.
+                        Not identified in analysis. While MQTT capability is mentioned for cloud connectivity [Source: README.md], there is no specific information about cloud storage encryption methods.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While Section 3 "Data Transmission" confirms that data is transmitted via WiFi, it explicitly states "Data Encrypted in Transit: Unknown". Section 11 also confirms "Transit Encryption: Unknown".
+                        Not identified in analysis. The device supports data transmission via WiFi, USB CDC, and UART to various destinations including MQTT servers [Source: Data Transmission section], but encryption methods for data in transit are not specified.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The device analysis contains no information about mobile app to cloud communications or associated encryption methods.
+                        Not identified in analysis. No mobile application is mentioned in the provided documentation.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Section 11 explicitly states "Key Management: Unknown" with no evidence of key management implementations in the analyzed files.
+                        Not identified in analysis. No information about cryptographic key management is present in the documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. Section 11 states "Crypto Libraries: Unknown" and no cryptographic libraries are listed in the Component Inventory section's Software Components & Dependencies.
+                        Not identified in analysis. No cryptographic libraries are mentioned in the provided documentation files.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Yes, there are significant concerns due to the lack of documented encryption implementations. The Privacy Risk Level is rated as "Medium" with key concerns including "Limited encryption documentation". The absence of clear encryption mechanisms for stored and transmitted data represents a potential security risk.
+                        Yes. The primary security concern is the apparent lack of documented encryption for sensitive medical data. Given that the device collects identifiable health information including ECG, temperature, and pulse oximetry data [Source: Data Collection & Storage section], the absence of documented encryption methods represents a significant security risk.
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis reveals an absence of documented encryption methods, it does not provide any justification for this absence. This is noted as an "Area Requiring Further Investigation" in Section 12 under "Components with Unknown Status" where "Encryption implementations" is listed.
+                        Not identified in analysis. The documentation does not provide any justification for the apparent lack of encryption. This is particularly concerning given the sensitive nature of the medical data being collected and transmitted.
                     </div>
                 </div>
                 
