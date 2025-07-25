@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Home Fi</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/JobinBiju/Home-Fi.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/JobinBiju/Home-Fi.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:19:53</p>
+                <p><strong>Generated:</strong> 2025-07-25 02:14:19</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What encryption methods are used for data stored on the device?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The analysis explicitly states there is no local storage on the device: "Type of Data Stored on Device: No device storage" [Source: ESP32_AdafruitIO.ino].
+                        Not identified in analysis. The documentation does not specify any information about local data storage encryption methods.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis mentions a Flutter mobile application exists, there is no specific information about data storage or encryption methods used within the app.
+                        Not identified in analysis. While the analysis mentions a Flutter mobile application, there is no information about data storage encryption within the app.
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While the analysis confirms data is stored in Adafruit IO cloud, the cloud-side encryption methods are not detailed in the provided documentation.
+                        Not identified in analysis. Although Adafruit IO is mentioned as the cloud platform [Source: README.md], specific encryption methods for cloud storage are not detailed.
                     </div>
                 </div>
                 
@@ -185,7 +185,7 @@
                         <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
                     </div>
                     <div class="answer">
-                        The analysis indicates data is encrypted using MQTT over TLS for transmission between the device and Adafruit IO cloud server [Source: ESP32_AdafruitIO.ino, TempHumidAPI.dart]. However, specific TLS version and cipher suites are not detailed.
+                        While the analysis indicates MQTT over WiFi is used for data transmission to Adafruit IO [Source: README.md], specific encryption methods for data in transit are not detailed.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While both mobile app and cloud components exist, the encryption methods for their communication are not detailed in the provided analysis.
+                        Not identified in analysis. The communication between the Flutter mobile app and Adafruit IO is mentioned, but encryption methods are not specified.
                     </div>
                 </div>
                 
@@ -203,7 +203,7 @@
                         <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. The key management system is not detailed in the provided documentation.
+                        Not identified in analysis. No information about cryptographic key management is provided in the documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. While MQTT over TLS is mentioned, specific cryptographic libraries and their versions are not detailed.
+                        Not identified in analysis. The documentation does not mention any cryptographic libraries.
                     </div>
                 </div>
                 
@@ -221,7 +221,7 @@
                         <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
                     </div>
                     <div class="answer">
-                        Not enough information is provided to make a complete assessment. The only confirmed encryption is MQTT over TLS for device-to-cloud communication, but without details about implementation, versions, or key management, potential security concerns cannot be properly evaluated.
+                        Due to the lack of documented encryption methods and security measures, this represents a potential security concern. The analysis does not provide evidence of any encryption implementation, which could indicate insufficient security measures for protecting sensitive data during storage and transmission.
                     </div>
                 </div>
                 
@@ -229,8 +229,8 @@
                     <div class="question">
                         <strong>Q9:</strong> If no encryption is used, what is the justification?
                     </div>
-                    <div class="answer">
-                        Not applicable - some encryption is used (MQTT over TLS for data transmission). However, encryption status for other aspects of the system (local storage, mobile app, cloud storage) cannot be determined from the provided analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation does not provide any justification for the presence or absence of encryption methods.
                     </div>
                 </div>
                 
