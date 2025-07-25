@@ -147,7 +147,7 @@
                 <p><strong>Device:</strong> Feather Th Azure Iot</p>
                 <p><strong>Repository:</strong> <a href="https://github.com/bwyatt/feather-th-azure-iot.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/bwyatt/feather-th-azure-iot.git</a></p>
                 <p><strong>Analysis Type:</strong> Question-based security assessment</p>
-                <p><strong>Generated:</strong> 2025-07-24 03:37:51</p>
+                <p><strong>Generated:</strong> 2025-07-25 03:10:21</p>
             </div>
 
             <div class="content-box">
@@ -158,7 +158,7 @@
                         <strong>Q1:</strong> What physical interfaces (USB, Ethernet, etc.) does the device support?
                     </div>
                     <div class="answer">
-                        The device supports the following physical interfaces [Source: code.py]: - USB - I2C (for sensor communication) - GPIO (for NeoPixel LED) No Ethernet port is identified in the analysis.
+                        Based on the analysis, the device definitely supports WiFi connectivity. While the device appears to be built on an Adafruit Feather platform which typically includes USB connectivity for programming and power, the specific interfaces are not explicitly detailed in the provided analysis. Therefore, a complete list of physical interfaces cannot be definitively stated without making assumptions.
                     </div>
                 </div>
                 
@@ -167,7 +167,7 @@
                         <strong>Q2:</strong> What communication protocols are being used by the device?
                     </div>
                     <div class="answer">
-                        The device uses the following protocols [Source: code.py]: - WiFi for network connectivity - I2C for sensor communication with AHT20 - MQTT for Azure IoT cloud communications - TLS for data encryption during transmission
+                        The device uses WiFi for communication and is designed to integrate with Azure IoT. No other specific protocols are mentioned in the analysis. [Source: README.md, code.py]
                     </div>
                 </div>
                 
@@ -176,7 +176,7 @@
                         <strong>Q3:</strong> What is the justification for having each interface and protocol?
                     </div>
                     <div class="answer">
-                        Based on the device's primary function [Source: README.md]: - USB: Likely for power and programming/debugging - I2C: Required for AHT20 temperature/humidity sensor communication - WiFi: Essential for cloud connectivity to Azure IoT - MQTT: Standard protocol for IoT device-to-cloud communication - TLS: Required for secure data transmission
+                        WiFi connectivity is justified for transmitting temperature and humidity sensor data to Azure IoT for monitoring 3D printer enclosures. This allows remote monitoring of environmental conditions. [Source: README.md]
                     </div>
                 </div>
                 
@@ -184,8 +184,8 @@
                     <div class="question">
                         <strong>Q4:</strong> What access is provided across each of the interfaces?
                     </div>
-                    <div class="answer">
-                        Limited information available in analysis, but we can identify: - I2C: Sensor data access - WiFi: Cloud connectivity for data transmission - USB: Likely programming and power access Specific access controls and permissions are not detailed in the analysis.
+                    <div class="answer not-identified">
+                        Not identified in analysis. While we know the device transmits sensor data via WiFi to Azure IoT, specific details about access controls and permissions across interfaces are not documented in the provided analysis.
                     </div>
                 </div>
                 
@@ -194,7 +194,7 @@
                         <strong>Q5:</strong> What safeguards are designed for each interface to prevent misuse?
                     </div>
                     <div class="answer not-identified">
-                        Limited information available in analysis. Only identified safeguard is TLS encryption for data transmission to Azure IoT [Source: code.py]. Other interface safeguards are not identified in analysis.
+                        Not identified in analysis. While the device includes warning and critical thresholds for sensor readings [Source: code.py], specific security safeguards for interfaces are not documented.
                     </div>
                 </div>
                 
@@ -202,8 +202,8 @@
                     <div class="question">
                         <strong>Q6:</strong> How can users securely set up their device?
                     </div>
-                    <div class="answer not-identified">
-                        Not fully detailed in analysis. The device requires WiFi SSID/credentials setup [Source: code.py], but specific secure setup procedures are not identified in analysis.
+                    <div class="answer">
+                        The analysis indicates that users need to configure WiFi SSID during setup [Source: code.py], but complete secure setup procedures are not detailed in the provided documentation.
                     </div>
                 </div>
                 
@@ -212,7 +212,7 @@
                         <strong>Q7:</strong> Is there a Manufacturer Usage Description (MUD) file available?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis.
+                        Not identified in analysis. No mention of a MUD file was found in the provided documentation.
                     </div>
                 </div>
                 
@@ -220,8 +220,8 @@
                     <div class="question">
                         <strong>Q8:</strong> How might the device's network functions affect user privacy?
                     </div>
-                    <div class="answer not-identified">
-                        The device: - Continuously transmits temperature/humidity data to Azure cloud - Stores WiFi credentials - Has "Medium" privacy risk level - Cloud data retention policies unknown [Source: Section 9 - Privacy Risk Level]
+                    <div class="answer">
+                        The device collects and transmits environmental data (temperature and humidity) via WiFi to Azure IoT. While the privacy risk is assessed as "Low," the analysis notes undefined data retention policies and unclear cloud storage implementation as key concerns. The device does not collect personal information, but network connectivity could potentially expose device location through IP address. [Source: Final Assessment section]
                     </div>
                 </div>
                 
@@ -230,7 +230,7 @@
                         <strong>Q9:</strong> Are there any unused or unnecessary ports/protocols that pose security risks?
                     </div>
                     <div class="answer not-identified">
-                        Not identified in analysis. All documented interfaces and protocols (USB, I2C, WiFi, MQTT) appear to serve specific functional purposes for the device's core operations [Source: code.py].
+                        Not identified in analysis. While the device uses WiFi connectivity, there is no documentation of unused or unnecessary ports/protocols in the provided analysis.
                     </div>
                 </div>
                 
