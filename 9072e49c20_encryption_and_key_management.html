@@ -1,0 +1,247 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Encryption & Key Management Analysis - Synviz</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: #f8f9fa;
+                    line-height: 1.6;
+                }
+
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+
+                .header h1 {
+                    margin: 0 0 10px 0;
+                    font-size: 2.2em;
+                    font-weight: 300;
+                }
+
+                .header p {
+                    margin: 0;
+                    opacity: 0.9;
+                    font-size: 1.1em;
+                }
+
+                .info-box {
+                    background: white;
+                    padding: 25px;
+                    border-radius: 12px;
+                    margin-bottom: 30px;
+                    border-left: 5px solid #667eea;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .info-box p {
+                    margin: 8px 0;
+                    color: #555;
+                }
+
+                .info-box strong {
+                    color: #333;
+                }
+
+                .content-box {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;
+                }
+
+                .qa-section {
+                    margin-bottom: 30px;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .qa-section:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .question {
+                    color: #2c3e50;
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    border-radius: 0 8px 8px 0;
+                }
+
+                .answer {
+                    color: #555;
+                    font-size: 1em;
+                    line-height: 1.7;
+                    padding: 15px 20px;
+                    background: #fdfdfd;
+                    border-radius: 8px;
+                    border: 1px solid #e9ecef;
+                }
+
+                .answer strong {
+                    color: #2c3e50;
+                }
+
+                .source-ref {
+                    color: #6c757d;
+                    font-style: italic;
+                    font-size: 0.9em;
+                }
+
+                .footer {
+                    text-align: center;
+                    margin-top: 40px;
+                    padding: 25px;
+                    color: #6c757d;
+                    font-size: 0.9em;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .not-identified {
+                    color: #dc3545;
+                    font-style: italic;
+                }
+
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    body {
+                        padding: 10px;
+                    }
+
+                    .header h1 {
+                        font-size: 1.8em;
+                    }
+
+                    .content-box, .info-box {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Encryption & Key Management Analysis</h1>
+                <p>IoT Security Analysis for Synviz</p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Device:</strong> Synviz</p>
+                <p><strong>Repository:</strong> <a href="https://github.com/w29ahmed/Synviz.git" target="_blank" style="color: #667eea; text-decoration: none;">https://github.com/w29ahmed/Synviz.git</a></p>
+                <p><strong>Analysis Type:</strong> Question-based security assessment</p>
+                <p><strong>Generated:</strong> 2025-07-26 16:16:29</p>
+            </div>
+
+            <div class="content-box">
+                <div class="qa-content">
+                    
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q1:</strong> What encryption methods are used for data stored on the device?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The device analysis indicates temporary storage of video frames but does not specify any encryption methods for local storage. [Source: Device Analysis Section 2]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q2:</strong> What encryption methods are used for data stored in mobile applications?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. While the analysis mentions React Frontend components, there is no information about mobile applications or their data storage encryption methods. [Source: Device Analysis Section 10]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q3:</strong> What encryption methods are used for data stored in the cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not explicitly identified in analysis. The device uses Google Cloud Platform (GCP) for storage, but specific encryption configurations are unknown. Default GCP encryption may be in place but is not confirmed in the documentation. [Source: Device Analysis Section 11]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q4:</strong> What encryption methods are used for data in transit between device and cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. While data transmission to GCP is confirmed, the encryption methods for data in transit are not specified. The analysis explicitly lists this as "Transit Encryption: Unknown" [Source: Device Analysis Section 11]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q5:</strong> What encryption methods are used for data in transit between mobile app and cloud?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The system uses HTTP/HTTPS and WebSocket protocols [Source: Device Analysis Section 12], but specific encryption methods for these communications are not detailed.
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q6:</strong> How are cryptographic keys generated, stored, and managed?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The analysis explicitly states "Key Management: Unknown" [Source: Device Analysis Section 11]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q7:</strong> What cryptographic libraries are used and what are their versions?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The analysis lists "Crypto Libraries: Unknown" [Source: Device Analysis Section 11]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q8:</strong> Are there any security concerns with the encryption implementation?
+                    </div>
+                    <div class="answer not-identified">
+                        Yes, several concerns are evident: 1. Lack of documented encryption methods for sensitive biometric data 2. Unknown security status of data in transit 3. Unclear key management practices 4. Missing security documentation [Source: Device Analysis Section 9 - Privacy Risk Level and Documentation Completeness]
+                    </div>
+                </div>
+                
+                <div class="qa-section">
+                    <div class="question">
+                        <strong>Q9:</strong> If no encryption is used, what is the justification?
+                    </div>
+                    <div class="answer not-identified">
+                        Not identified in analysis. The documentation does not provide any justification for the presence or absence of encryption. This is listed as an "Area Requiring Further Investigation" in the analysis [Source: Device Analysis Section 12]
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><strong>Generated by IoT Privacy Label Generator</strong></p>
+                <p>This analysis is based on available documentation and code review.</p>
+                <p>Questions are answered using AI analysis of the device's source code and documentation.</p>
+            </div>
+        </body>
+        </html>
+        
